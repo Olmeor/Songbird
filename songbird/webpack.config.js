@@ -59,17 +59,6 @@ module.exports = ({ development }) => ({
     ]
   },
   plugins: [
-    // new HtmlWebpackPlugin({
-    //   // title: 'Demo webpack'
-    //   template: './src/index.html',
-    //   favicon: './src/assets/favicon.ico'
-    // }),
-    // new HtmlWebpackPlugin({
-    //   filename: 'main.html',
-    //   template: './src/pages/main/main.html',
-    //   favicon: "./src/favicon.png",
-    //   chunks: ["main"]
-    // }),
     new HtmlWebpackPlugin({
       filename: 'index.html',
       template: './src/pages/main/index.html',

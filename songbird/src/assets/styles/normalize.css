@@ -54,15 +54,11 @@ html input[disabled] {
   cursor: default;
 }
 
-body {
-  font-family: 'Roboto';
-}
-
-header,
+/* header,
 main,
 footer {
   margin: 0 auto;
-}
+} */
 
 ::-webkit-scrollbar {
 	display: none;

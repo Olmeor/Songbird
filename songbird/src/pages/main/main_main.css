@@ -1,0 +1,89 @@
+.main {
+  max-width: 1280px;
+  margin: auto;
+  flex: 1 1 auto;
+}
+
+.main__wrapper {
+  background: #0081A7;
+  margin: 0 30px;
+  padding: 30px;
+  border-radius: 20px;
+  color: #FDFCDC;
+  line-height: 1.2;
+  z-index: 1;
+}
+
+.main__title {
+  text-align: center;
+  font-size: 2rem;
+  margin-bottom: 20px;
+}
+
+.main__title em {
+  color: #FED9B7;
+  font-family: 'Rochester';
+  font-size: 3rem;
+}
+
+.main__title strong {
+  color: #F07167;
+  font-family: 'Rochester';
+  font-size: 3rem;
+}
+
+.main__subtitle {
+  text-align: center;
+  font-size: 1.5rem;
+  margin-bottom: 30px
+}
+
+.main__text {
+  margin-bottom: 20px;
+  font-size: 1.2rem;
+}
+
+.main__list {
+  margin-bottom: 20px;
+  font-size: 1.2rem;
+}
+
+.main__item {
+  background-image: url('../../assets/icons/marker.svg');
+  background-size: 20px;
+  background-repeat: no-repeat;
+	background-position: left center;
+  padding-left: 30px;
+  margin-bottom: 10px;
+}
+
+.main__button {
+  width: 300px;
+  height: 55px;
+  background-color: #F07167;
+  border-radius: 25px;
+  font-weight: 700;
+  line-height: 140%;
+  text-transform: uppercase;
+  color: #FED9B7;
+  display: flex;
+  justify-content: center;
+	align-items: center;
+  transition: all 0.4s ease;
+  margin: 0 auto;
+  transform: scale(1.0);
+}
+
+.main__button:hover {
+  background: #FED9B7;
+  transition: all 0.4s ease;
+  color: #00AFB9;
+  transform: scale(1.05);
+}
+
+.main__button:active {
+  background: #00AFB9;
+  transition: all 0.4s ease;
+  color: #FED9B7;
+  transform: scale(1.0);
+}
