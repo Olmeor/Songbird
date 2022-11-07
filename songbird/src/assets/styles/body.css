@@ -1,12 +1,11 @@
 body {
   font-family: 'Verdana';
-	background: #FDFCDC;
 	z-index: -1;
   height: 100%;
 	display: flex;
 	flex-direction: column;
   background:
-    linear-gradient(rgba(253, 252, 220, 0.7), rgba(0, 0, 0, 0.8)),
+    linear-gradient(rgba(253, 252, 220, 0.7), rgba(253, 252, 220, 0.5)),
 		url('../images/bg_image.jpg');
 	background-size: cover;
 	background-repeat: no-repeat;

@@ -20,7 +20,7 @@ module.exports = ({ development }) => ({
     index: './src/pages/main/script.js',
     game: './src/pages/game/game.js',
     result: './src/pages/result/result.js',
-
+    gallery: './src/pages/gallery/gallery.js',
   },
   output: {
     // clean: true,
@@ -76,6 +76,12 @@ module.exports = ({ development }) => ({
       template: './src/pages/result/result.html',
       favicon: "./src/favicon.png",
       chunks: ["result"]
+    }),
+    new HtmlWebpackPlugin({
+      filename: 'gallery.html',
+      template: './src/pages/gallery/gallery.html',
+      favicon: "./src/favicon.png",
+      chunks: ["gallery"]
     }),
     new MiniCssExtractPlugin({
       filename: './[name].css'
