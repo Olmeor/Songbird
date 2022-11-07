@@ -86,7 +86,7 @@
 .header__title-burger {
   position: fixed;
   z-index: 100;
-  left: 30px;
+  left: 15px;
   top: -539px;
   transition: all 0.4s ease;
   height: 40px;
@@ -189,7 +189,6 @@
 
   header {
     /* position: fixed; */
-    width: 100%;
     top: 0;
     left: 0;
     z-index: 10;
@@ -292,10 +291,12 @@
 
 }
 
-/* @media screen and (max-width: 320px) {
+@media screen and (max-width: 480px) {
 
   .header__wrapper {
-    padding: 0 10px;
+    padding: 0 15px;
   }
 
-} */
+
+
+}

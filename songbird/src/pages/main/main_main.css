@@ -87,3 +87,40 @@
   color: #FED9B7;
   transform: scale(1.0);
 }
+
+@media screen and (max-width: 480px) {
+
+  .main__wrapper {
+    margin: 0 15px;
+    padding: 15px;
+  }
+
+  .main__title {
+    text-align: center;
+    font-size: 1.5rem;
+    margin-bottom: 10px;
+  }
+
+  .main__title em,
+  .main__title strong {
+    font-size: 2rem;
+  }
+
+  .main__subtitle {
+    text-align: center;
+    font-size: 1.2rem;
+    margin-bottom: 20px
+  }
+
+  .main__text,
+  .main__list {
+    font-size: 1rem;
+  }
+
+  .main__button {
+    width: 230px;
+    height: 45px;
+  }
+
+
+}

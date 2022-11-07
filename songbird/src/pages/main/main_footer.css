@@ -21,10 +21,11 @@
 
 .footer__github-logo {
   background-image: url("../../assets/icons/github_logo.svg");
-  background-size: 40px 40px;
+  background-size: 33px 33px;
   background-repeat: no-repeat;
+  background-position: right;
   width: 80px;
-  height: 40px;
+  height: 33px;
   z-index: 10;
   transition: all 0.4s ease;
 }
@@ -42,4 +43,29 @@
 
 .footer__text span{
   color: #F07167;
+}
+
+@media screen and (max-width: 480px) {
+
+  .footer__wrapper {
+    margin: 15px;
+  }
+
+
+  .footer__rss-logo {
+    background-size: 60px 23px;
+    width: 60px;
+    height: 23px;
+  }
+
+  .footer__github-logo {
+    background-size: 25px 25px;
+    width: 60px;
+    height: 25px;
+  }
+
+  .footer__text {
+    font-size: 1.5rem;
+  }
+
 }
