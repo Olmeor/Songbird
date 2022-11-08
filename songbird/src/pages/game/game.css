@@ -1,0 +1,130 @@
+.game {
+  max-width: 1280px;
+  width: 100%;
+  margin: auto;
+  flex: 1 1 auto;
+}
+
+.game__wrapper {
+  margin: 0 30px;
+  border-radius: 20px;
+  color: #FDFCDC;
+  line-height: 1.2;
+  z-index: 1;
+}
+
+.game__header {
+  background: #0081A7;
+  display: flex;
+  justify-content: space-around;
+  flex-wrap: wrap;
+  border-radius: 10px;
+  width: 100%;
+  margin-bottom: 30px;
+}
+
+.game__item {
+  flex: 0 1 12.5%;
+  /* width: calc((100%) / 6); */
+  margin: 10px 0px;
+  padding: 5px 3px;
+  font-size: 1.1rem;
+  font-weight: 700;
+  white-space: nowrap;
+  text-align: center;
+  border-radius: 10px;
+  transition: all 0.4s ease;
+}
+
+.game__item_active {
+  background: #00AFB9;
+  color: #FED9B7;
+  transition: all 0.4s ease;
+}
+
+.game-random {
+  background: #0081A7;
+  border-radius: 10px;
+  width: 100%;
+  margin-bottom: 30px;
+  padding: 15px;
+  display: flex;
+  gap: 30px;
+}
+
+.game-random__image {
+  background: url('../../assets/images/back.jpg') no-repeat center;
+  background-size: contain;
+  width: 200px;
+  height: 155px;
+  border-radius: 10px;
+}
+
+.game-random__desc {
+  width: calc(100% - 200px - 30px);
+}
+
+.game-random__header {
+  text-align: center;
+  padding: 5px;
+  border-bottom: 2px solid #00AFB9;
+  font-size: 1.2rem;
+  font-weight: 700;
+}
+
+.game-bird__wrapper {
+  display: flex;
+  gap: 30px;
+}
+
+.game-bird__list {
+  flex: 0 1 35%;
+  background: #0081A7;
+  height: 200px;
+  border-radius: 10px;
+}
+
+.game-bird__inner {
+  flex: 0 1 65%;
+  background: #0081A7;
+  /* height: 200px; */
+  border-radius: 10px;
+  padding: 15px;
+}
+
+.game-bird__container {
+  display: flex;
+  gap: 20px;
+}
+
+.game-bird__image {
+  background: url('../../assets/images/govorun.jpg') no-repeat center;
+  background-size: contain;
+  width: 200px;
+  height: 155px;
+  border-radius: 10px;
+}
+
+.game-bird__title {
+  width: calc(100% - 200px - 20px);
+}
+
+.game-bird__name {
+  text-align: center;
+  border-bottom: 2px solid #00AFB9;
+  font-size: 1.2rem;
+  font-weight: 700;
+  width: 100%;
+  margin-bottom: 10px;
+}
+
+.game-bird__species {
+  text-align: center;
+  border-bottom: 2px solid #00AFB9;
+  font-weight: 500;
+  margin-bottom: 10px;
+}
+
+.game-random__description {
+  margin-top: 10px;
+}

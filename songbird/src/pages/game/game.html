@@ -40,6 +40,71 @@
     </header>
 
     <main class="game">
+      <div class="game__wrapper">
+        <ul class="game__header">
+          <li class="game__item game__item_active">Разминка</li>
+          <li class="game__item">Воробьиные</li>
+          <li class="game__item">Лесные птицы</li>
+          <li class="game__item">Певчие птицы</li>
+          <li class="game__item">Хищные птицы</li>
+          <li class="game__item">Морские птицы</li>
+        </ul>
+
+        <section class="game-random">
+          <div class="game-random__image"></div>
+          <div class="game-random__desc">
+            <h2 class="game-random__header">* * * * * *</h2>
+            <div class="game-random__player-wrapper">
+              <div class="game-random__player-control">
+                <button class="play player-icon"></button>
+                <input class="progress-bar progress-style" type="range" min="0" max="100" value="0">
+              </div>
+              <div class="play-time">
+                <div class="play-current-time">00:00</div>
+                <div class="play-duration-time">00:00</div>
+              </div>
+              <div class="game-random__player-volume">
+                <button class="vol-mute player-icon"></button>
+                <input class="vol-line progress-style" type="range" min="0" max="100" value="10">
+              </div>
+            </div>
+          </div>
+        </section>
+        <section class="game-bird__wrapper">
+          <ul class="game-bird__list">
+            <li class="game-bird__item"></li>
+            <li class="game-bird__item"></li>
+            <li class="game-bird__item"></li>
+            <li class="game-bird__item"></li>
+            <li class="game-bird__item"></li>
+            <li class="game-bird__item"></li>
+          </ul>
+          <div class="game-bird__inner">
+            <div class="game-bird__container">
+              <div class="game-bird__image"></div>
+              <div class="game-bird__title">
+                <p class="game-bird__name">Говорун</p>
+                <p class="game-bird__species">Pticius zvizdobolius</p>
+              </div>
+            </div>
+            <div class="game-random__player-wrapper">
+              <div class="game-random__player-control">
+                <button class="play player-icon"></button>
+                <input class="progress-bar progress-style" type="range" min="0" max="100" value="0">
+              </div>
+              <div class="play-time">
+                <div class="play-current-time">00:00</div>
+                <div class="play-duration-time">00:00</div>
+              </div>
+              <div class="game-random__player-volume">
+                <button class="vol-mute player-icon"></button>
+                <input class="vol-line progress-style" type="range" min="0" max="100" value="10">
+              </div>
+            </div>
+            <div class="game-random__description">Птица - Говорун, отличается умом и сообразительностью. Родина говорунов — планета Блук. Обладают необыкновенной памятью, что позволяет им воспроизводить любые когда-либо услышанные слова и звуки.</div>
+          </div>
+        </section>
+      </div>
 
     </main>
 

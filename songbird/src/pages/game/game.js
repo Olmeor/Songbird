@@ -3,6 +3,8 @@ import '../../assets/styles/normalize.css'
 import '../../assets/styles/body.css'
 import '../../assets/styles/header.css'
 import '../../assets/styles/footer.css'
+import './game.css'
+import './player.css'
 
 import { burgerOpen, openBurger, closeBurger } from '../../assets/js/burger'
 
