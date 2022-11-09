@@ -36,7 +36,7 @@
 }
 
 .play {
-  width: 33px;
+  min-width: 33px;
   height: 30px;
   left: 0;
   background-size: 30px 30px;
@@ -97,7 +97,7 @@
   justify-self: flex-start;
   min-width: 32px;
   height: 32px; */
-  width: 33px;
+  min-width: 33px;
   height: 30px;
   left: 0;
   background-size: 30px 30px;
@@ -162,4 +162,12 @@
 .play-duration-time {
   font-size: 0.8rem;
   /* opacity: .8; */
+}
+
+@media screen and (max-width: 480px) {
+
+  .play-time {
+    margin-left: 38px;
+  }
+
 }

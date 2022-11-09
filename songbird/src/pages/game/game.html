@@ -53,7 +53,10 @@
         <section class="game-random">
           <div class="game-random__image"></div>
           <div class="game-random__desc">
-            <h2 class="game-random__header">* * * * * *</h2>
+            <div class="game-random__inner">
+              <h2 class="game-random__header">* * * * * *</h2>
+              <h2 class="game-random__score">Счет: <span>00</span></h2>
+            </div>
             <div class="game-random__player-wrapper">
               <div class="game-random__player-control">
                 <button class="play player-icon"></button>
@@ -70,14 +73,27 @@
             </div>
           </div>
         </section>
+
         <section class="game-bird__wrapper">
           <ul class="game-bird__list">
-            <li class="game-bird__item"></li>
-            <li class="game-bird__item"></li>
-            <li class="game-bird__item"></li>
-            <li class="game-bird__item"></li>
-            <li class="game-bird__item"></li>
-            <li class="game-bird__item"></li>
+            <li class="game-bird__item">
+              <span class="game-bird__button"></span>Алиса
+            </li>
+            <li class="game-bird__item">
+              <span class="game-bird__button"></span>Громозека
+            </li>
+            <li class="game-bird__item">
+              <span class="game-bird__button"></span>Говорун
+            </li>
+            <li class="game-bird__item">
+              <span class="game-bird__button"></span>Весельчак У
+            </li>
+            <li class="game-bird__item">
+              <span class="game-bird__button"></span>Зеленый
+            </li>
+            <li class="game-bird__item">
+              <span class="game-bird__button"></span>Верховцев
+            </li>
           </ul>
           <div class="game-bird__inner">
             <div class="game-bird__container">
@@ -103,6 +119,10 @@
             </div>
             <div class="game-random__description">Птица - Говорун, отличается умом и сообразительностью. Родина говорунов — планета Блук. Обладают необыкновенной памятью, что позволяет им воспроизводить любые когда-либо услышанные слова и звуки.</div>
           </div>
+        </section>
+
+        <section class="game__footer">
+          <button class="game__footer-button" disabled>Следующий вопрос</button>
         </section>
       </div>
 
