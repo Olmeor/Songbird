@@ -27,7 +27,6 @@
 
 .game__item {
   flex: 0 1 12.5%;
-  /* width: calc((100%) / 6); */
   margin: 10px 0px;
   padding: 5px 3px;
   font-size: 1.1rem;
@@ -68,14 +67,12 @@
 
 .game-random__inner {
   display: flex;
-  /* padding: 0 10px; */
   justify-content: space-between;
   border-bottom: 2px solid #00AFB9;
 }
 
 .game-random__header,
 .game-random__score {
-  /* text-align: center; */
   padding: 5px;
   font-size: 1.2rem;
   font-weight: 700;
@@ -90,7 +87,7 @@
   flex: 0 1 35%;
   background: #0081A7;
   border-radius: 10px;
-  padding: 0 15px;
+  /* padding: 0 15px; */
   display: flex;
   flex-direction: column;
 }
@@ -101,10 +98,19 @@
   display: flex;
   align-items: center;
   font-size: 1.2rem;
+  padding: 0 15px;
+  cursor: pointer;
+  transition: all 0.4s ease;
 }
 
 .game-bird__item:nth-child(6) {
   border: none;
+}
+
+.game-bird__item:hover {
+  color: #FED9B7;
+  transition: all 0.4s ease;
+  background-color: #00AFB9;
 }
 
 .game-bird__button {
@@ -129,15 +135,17 @@
 } */
 
 .default .game-bird__button {
-  background-color: #666;
+  background-color: #FED9B7;
 }
 
-.success .game-bird__button {
+._success {
   background-color: #00AFB9;
+  border: 3px solid #FED9B7;
 }
 
-.error .game-bird__button {
+._error {
   background-color: #F07167;
+  border: 3px solid #FED9B7;
 }
 
 .game-bird__inner {
@@ -233,6 +241,14 @@
   transform: scale(1.0);
 }
 
+@media screen and (max-width: 980px) {
+
+  .game__item {
+    margin: 5px 0;
+  }
+
+}
+
 @media screen and (max-width: 620px) {
 
   .game-random__inner {
@@ -260,7 +276,6 @@
   }
 
   .game__item {
-    margin: 5px 0;
     padding: 3px 5px;
   }
 
