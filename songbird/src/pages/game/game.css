@@ -21,6 +21,8 @@
   border-radius: 10px;
   width: 100%;
   margin-bottom: 30px;
+  padding: 0 10px;
+  gap: 5px;
 }
 
 .game__item {
@@ -258,7 +260,8 @@
   }
 
   .game__item {
-    margin: 0;
+    margin: 5px 0;
+    padding: 3px 5px;
   }
 
   .game-random {
@@ -288,4 +291,22 @@
   .game__footer-button {
     width: 250px;
   }
+
+}
+
+@media screen and (max-width: 420px) {
+
+  .game__header {
+    flex-direction: column;
+    gap: 0;
+  }
+
+  .game__item {
+    font-size: 1rem;
+  }
+
+  .game-bird__item {
+    font-size: 1rem;
+  }
+
 }
