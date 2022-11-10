@@ -27,6 +27,7 @@ module.exports = ({ development }) => ({
     path: path.resolve(__dirname, 'dist'),
     filename: './js/[name].[contenthash].js',
     // filename: './js/bundle.js',
+    // assetModuleFilename: 'assets/[hash][ext]',
     assetModuleFilename: 'assets/[hash][ext]',
   },
   module: {
@@ -88,15 +89,15 @@ module.exports = ({ development }) => ({
       // filename: './css/[name].css'
       // filename: '[name].[contenthash].css'
     }),
-    // new CopyPlugin({
-    //   patterns: [
-    //     // {from: './public',}
-    //     // { from: './public', to 'dir' },
-    //     // noErrorOnMissing: true,
-    //     // { from: './src/assets/quotes/*.json', to: './assets/quotes/[name][ext]' },
-    //     // { from: './src/assets/sounds/*.mp3', to: './assets/sounds/[name][ext]' },
-    //   ],
-    // }),
+    new CopyPlugin({
+      patterns: [
+        // {from: './public',}
+        // { from: './public', to 'dir' },
+        // noErrorOnMissing: true,
+        { from: './src/assets/sounds/*.mp3', to: './assets/sounds/[name][ext]' },
+        { from: './src/assets/images/*.jpg', to: './assets/images/[name][ext]' },
+      ],
+    }),
     new CleanWebpackPlugin({ cleanStaleWebpackAssets: false }),
   ],
   resolve: {
