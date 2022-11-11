@@ -21,7 +21,6 @@ let gameScore = 0;
 let currentScore = 5;
 
 function getRandomNum(num = 6) {
-  // return Math.floor(Math.random() * num + 1); // 1 - num
   return Math.floor(Math.random() * num); // 0 - num-1
 }
 
@@ -33,6 +32,7 @@ function initLevel() {
     const li = document.createElement("li");
     gameBirdList.append(li)
     li.classList.add("game-bird__item");
+    li.id = `bird-${i}`;
     const span = document.createElement("span");
     li.prepend(span);
     span.classList.add("game-bird__button");
@@ -52,6 +52,7 @@ function initLevel() {
   level[questionIndex].classList.add("game__item_active");
 
   resetBird();
+  resetSolution();
 }
 
 initLevel();
@@ -81,23 +82,56 @@ function resetBird() {
 resetBird();
 resetScore();
 
+function resetSolution() {
+  const birdName = document.querySelector(".game-bird__name");
+  birdName.textContent = "Прослушайте голос птицы";
+  const birdSubName = document.querySelector(".game-bird__species");
+  birdSubName.textContent = "Выберите птицу из списка";
+  const birdImage = document.querySelector(".game-bird__image");
+  birdImage.style.background = `url('../../assets/images/back-game.jpg') no-repeat center`;
+  birdImage.style.backgroundSize = "cover";
+  const birdPlayer = document.querySelectorAll(".game-random__player-wrapper");
+  birdPlayer[1].classList.add('hidden-block');
+  const birdDesc = document.querySelector(".game-bird__description");
+  birdDesc.textContent = "";
+  birdDesc.classList.add('hidden-block');
+  const verticalLayout = document.querySelector(".game-bird__container");
+  verticalLayout.style.flexDirection = "column";
+  verticalLayout.style.alignItems = "center";
+  const birdTitle = document.querySelector(".game-bird__title");
+  birdTitle.style.width = "100%";
+}
+
+function addSolution(birdChoice) {
+  const birdName = document.querySelector(".game-bird__name");
+  birdName.textContent = `${birdsData[questionIndex][birdChoice].name}`;
+  const birdSubName = document.querySelector(".game-bird__species");
+  birdSubName.textContent = `${birdsData[questionIndex][birdChoice].species}`;
+  const birdImage = document.querySelector(".game-bird__image");
+  birdImage.style.background = `url('${birdsData[questionIndex][birdChoice].image}') no-repeat center`;
+  birdImage.style.backgroundSize = "cover";
+  const birdPlayer = document.querySelectorAll(".game-random__player-wrapper");
+  birdPlayer[1].classList.remove('hidden-block');
+  const birdDesc = document.querySelector(".game-bird__description");
+  birdDesc.textContent = `${birdsData[questionIndex][birdChoice].description}`;
+  birdDesc.classList.remove('hidden-block');
+  const verticalLayout = document.querySelector(".game-bird__container");
+  verticalLayout.style.flexDirection = "row";
+  verticalLayout.style.alignItems = "left";
+  const birdTitle = document.querySelector(".game-bird__title");
+  birdTitle.style.width = "calc(100% - 200px - 20px)";
+}
+
 function checkRandomBird(e) {
   let birdNum = e.target.closest(".game-bird__item");
+  let birdChoice = e.path[0].id.slice(-1)
 
   if (!birdNum) { return; }
+  addSolution(birdChoice);
 
   if (birdNum.lastChild.textContent == birdsData[questionIndex][randomBird].name) {
     console.log('true');
-    const choiceBird = document.querySelectorAll(".game-bird__item");
-    choiceBird.forEach(e => e.onclick = null);
-    birdNum.firstChild.classList.add("_success");
-    const nextButton = document.querySelector(".game__footer-button");
-    nextButton.removeAttribute("disabled");
-    const birdName = document.querySelector(".game-random__header");
-    birdName.textContent = `${birdsData[questionIndex][randomBird].name}`;
-    const birdImage = document.querySelector(".game-random__image");
-    birdImage.style.background = `url('${birdsData[questionIndex][randomBird].image}') no-repeat center`;
-    birdImage.style.backgroundSize = "cover";
+    addWinLevel(birdNum);
     gameScore += currentScore;
     currentScore = 5;
     const score = document.querySelector(".game-random__score");
@@ -107,18 +141,31 @@ function checkRandomBird(e) {
     } else {
       initWin();
     }
-    // playTrue();
+    playTrue();
     randomBird = getRandomNum();
   } else {
     console.log('false');
     birdNum.firstChild.classList.add("_error");
     currentScore--;
-    // playFalse();
+    playFalse();
   }
 }
 
 const nextButton = document.querySelector(".game__footer-button");
 nextButton.onclick = initLevel;
+
+function addWinLevel(birdNum) {
+  const choiceBird = document.querySelectorAll(".game-bird__item");
+  choiceBird.forEach(e => e.onclick = null);
+  birdNum.firstChild.classList.add("_success");
+  const nextButton = document.querySelector(".game__footer-button");
+  nextButton.removeAttribute("disabled");
+  const birdName = document.querySelector(".game-random__header");
+  birdName.textContent = `${birdsData[questionIndex][randomBird].name}`;
+  const birdImage = document.querySelector(".game-random__image");
+  birdImage.style.background = `url('${birdsData[questionIndex][randomBird].image}') no-repeat center`;
+  birdImage.style.backgroundSize = "cover";
+}
 
 function initWin () {
   const nextButton = document.querySelector(".game__footer-button");

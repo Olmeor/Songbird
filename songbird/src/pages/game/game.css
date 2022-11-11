@@ -153,7 +153,7 @@
   background: #0081A7;
   border-radius: 10px;
   padding: 15px;
-  min-height: 363px;
+  min-height: 381.28px;
 }
 
 .game-bird__container {
@@ -190,7 +190,7 @@
   padding-bottom: 7px;
 }
 
-.game-random__description {
+.game-bird__description {
   margin-top: 10px;
 }
 
@@ -239,6 +239,18 @@
   background-color: #CCCCCC;
   color: #666666;
   transform: scale(1.0);
+}
+
+.hidden-block {
+	opacity: 0;
+	visibility: hidden;
+	overflow: hidden;
+  /* height: 0; */
+  min-height: 0;
+  padding: 0;
+	margin: 0;
+  font-size: 0;
+	transform: scale(0, 0);
 }
 
 @media screen and (max-width: 980px) {
@@ -296,7 +308,7 @@
   }
 
   .game-bird__item {
-    padding: 5px 0;
+    padding: 5px 10px;
   }
 
   .game__footer {

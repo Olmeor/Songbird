@@ -1,5 +1,5 @@
 const birdsDataEn = [
-  [       
+  [
     {
       id: 1,
       name: 'Raven',
@@ -12,7 +12,7 @@ const birdsDataEn = [
       id: 2,
       name: 'Shadoof',
       species: 'Grus grus',
-      description: 'The sounds made by the shadoof are similar to the voiced «kur-ly - kur-ly». Cranes most often sing in a duet - one bird begins the song with the syllable «kur», and the second picks up «ly». If a bird sings alone, then it makes only the sound of «chickens».',
+      description: 'The sounds made by the shadoof are similar to the voiced ï¿½kur-ly - kur-lyï¿½. Cranes most often sing in a duet - one bird begins the song with the syllable ï¿½kurï¿½, and the second picks up ï¿½lyï¿½. If a bird sings alone, then it makes only the sound of ï¿½chickensï¿½.',
       image: 'https://live.staticflickr.com/65535/49221158846_b0b69a58f1.jpg',
       audio: 'https://www.xeno-canto.org/sounds/uploaded/BLMSIUFTFU/XC512582-190604_1087_Grus_tok.mp3'
     },
@@ -20,7 +20,7 @@ const birdsDataEn = [
       id: 3,
       name: 'Swallow',
       species: 'Delichon urbicum',
-      description: 'Swallows are characterized by a low chirping. The songs of the swallows do not stop throughout the summer. Researchers distinguish up to 6 chirping sounds in birds: “vit”, “vi-vit”, “chivit”, “chirivit”, etc. Swallows love to sing a duet.',
+      description: 'Swallows are characterized by a low chirping. The songs of the swallows do not stop throughout the summer. Researchers distinguish up to 6 chirping sounds in birds: ï¿½vitï¿½, ï¿½vi-vitï¿½, ï¿½chivitï¿½, ï¿½chirivitï¿½, etc. Swallows love to sing a duet.',
       image: 'https://live.staticflickr.com//65535//48539007512_5029d2a9a0.jpg',
       audio: 'https://www.xeno-canto.org/sounds/uploaded/VOLIQOYWKG/XC489247-190724_09.10h_huiszwaluw_biesbosch_amaliahoeve_roep_100%2Bex_fouragerend_gezien_%20%282%29.mp3'
     },
@@ -36,7 +36,7 @@ const birdsDataEn = [
       id: 5,
       name: 'Cuckoo',
       species: 'Cuculus canorus',
-      description: 'The cuckoo was named so because of the peculiarities of its songs. The voiced “cuckoo” cannot be confused with any other bird. Cuckoos do not build nests, their offspring are raised by other species of birds, to which cuckoos throw their eggs.',
+      description: 'The cuckoo was named so because of the peculiarities of its songs. The voiced ï¿½cuckooï¿½ cannot be confused with any other bird. Cuckoos do not build nests, their offspring are raised by other species of birds, to which cuckoos throw their eggs.',
       image: 'https://live.staticflickr.com/65535/48377838151_e15f430ec1.jpg',
       audio: 'https://www.xeno-canto.org/sounds/uploaded/VOLIQOYWKG/XC501461-190616_08.13h_koekoek_brabantse%20biesbosch%20jantjesplaat_roep_1%20ex_ad%20m_ter%20plaatse%20zingend_gezien_.mp3'
     },
@@ -62,7 +62,7 @@ const birdsDataEn = [
       id: 2,
       name: 'Rook',
       species: 'Corvus frugilegus',
-      description: 'Rooks are very smart and quick-witted birds. With the help of a beak, they create and use the simplest tools. Rooks have a developed reflex to the sounds of a tractor. Hearing “rattling”, they fly to the sound - the tractor plows the ground, which means that there is a lot of food in this place.',
+      description: 'Rooks are very smart and quick-witted birds. With the help of a beak, they create and use the simplest tools. Rooks have a developed reflex to the sounds of a tractor. Hearing ï¿½rattlingï¿½, they fly to the sound - the tractor plows the ground, which means that there is a lot of food in this place.',
       image: 'https://live.staticflickr.com//65535//49347123322_291c86b016.jpg',
       audio: 'https://www.xeno-canto.org/sounds/uploaded/RLRHCUIPIY/XC512540-gawron%20Suble%2019.12.19%20%2012.35.mp3'
     },
@@ -70,7 +70,7 @@ const birdsDataEn = [
       id: 3,
       name: 'Jackdaw',
       species: 'Coloeus monedula',
-      description: 'The word “jackdaw” comes from word “jack” is translated as “black”. This word is often used to refer to ravens or other black birds. The Latin name of the jackdaw “monedula” is associated with the words coin for the bird\'s love for shiny and bright things.',
+      description: 'The word ï¿½jackdawï¿½ comes from word ï¿½jackï¿½ is translated as ï¿½blackï¿½. This word is often used to refer to ravens or other black birds. The Latin name of the jackdaw ï¿½monedulaï¿½ is associated with the words coin for the bird\'s love for shiny and bright things.',
       image: 'https://live.staticflickr.com//65535//49237149586_993cf685c5.jpg',
       audio: 'https://www.xeno-canto.org/sounds/uploaded/GYAUIPUVNM/XC510498-Coloeus%20monedula_2019.11.13_11.55_01.mp3'
     },
@@ -112,7 +112,7 @@ const birdsDataEn = [
       id: 2,
       name: 'Crossbill',
       species: 'Loxia curvirostra',
-      description: 'Crossbills are called “Christmas” birds. Under exceptional conditions, they give birth in winter - in January. These birds insulate their nests with moss and animal hair, so the chicks are not cold. In search of cones crossbills can fly 3500 km from the nest.',
+      description: 'Crossbills are called ï¿½Christmasï¿½ birds. Under exceptional conditions, they give birth in winter - in January. These birds insulate their nests with moss and animal hair, so the chicks are not cold. In search of cones crossbills can fly 3500 km from the nest.',
       image: 'https://live.staticflickr.com//65535//49365470123_f2de66bb35.jpg',
       audio: 'https://www.xeno-canto.org/sounds/uploaded/OTVUCEGYZN/XC495381-Kruisbek%20roep%20NHD%20290619.mp3'
     },
@@ -128,7 +128,7 @@ const birdsDataEn = [
       id: 4,
       name: 'Woodpecker',
       species: 'Dendrocopos major',
-      description: 'The woodpecker is a conspicuous and noisy bird that often lives next to humans. From mid-January to the end of June, you can hear the “drum roll” of woodpeckers - a trill from the vibration of branches under the quick beats of the bird\'s beak. In good weather, the shot can be heard within a radius of 1.5 km.',
+      description: 'The woodpecker is a conspicuous and noisy bird that often lives next to humans. From mid-January to the end of June, you can hear the ï¿½drum rollï¿½ of woodpeckers - a trill from the vibration of branches under the quick beats of the bird\'s beak. In good weather, the shot can be heard within a radius of 1.5 km.',
       image: 'https://live.staticflickr.com/65535/49339376578_e933426455.jpg',
       audio: 'https://www.xeno-canto.org/sounds/uploaded/ZNCDXTUOFL/XC518928-AB-017%20dzi%C4%99cio%C5%82%20du%C5%BCy%20agresja%20%282%29.mp3'
     },
@@ -220,7 +220,7 @@ const birdsDataEn = [
       id: 3,
       name: 'Harrier',
       species: 'Circus cyaneus',
-      description: 'Harrier is a small falcon. It feeds mainly on mouse-like rodents, the basis of its diet is voles, hamsters, and mice. The plumage of the Harrier may be ash grey. The comparison “gray-haired like a harrier” is associated with such a bird.',
+      description: 'Harrier is a small falcon. It feeds mainly on mouse-like rodents, the basis of its diet is voles, hamsters, and mice. The plumage of the Harrier may be ash grey. The comparison ï¿½gray-haired like a harrierï¿½ is associated with such a bird.',
       image: 'https://live.staticflickr.com/4480/37240531151_b74619c99d.jpg',
       audio: 'https://www.xeno-canto.org/sounds/uploaded/BLMSIUFTFU/XC513498-190709_1175_Cir.cyan-f.mp3'
     },
@@ -228,7 +228,7 @@ const birdsDataEn = [
       id: 4,
       name: 'Falcon',
       species: 'Falco peregrinus',
-      description: 'The Latin name of the falcon Falco comes from the word “sickle” because of the sickle-shaped wings. Long and wide wings allow the falcon to rise high into the sky and soar freely. The flight speed of the falcon reaches 280-320 kilometers per hour.',
+      description: 'The Latin name of the falcon Falco comes from the word ï¿½sickleï¿½ because of the sickle-shaped wings. Long and wide wings allow the falcon to rise high into the sky and soar freely. The flight speed of the falcon reaches 280-320 kilometers per hour.',
       image: 'https://live.staticflickr.com//65535//49310710607_92a3a145a9.jpg',
       audio: 'https://www.xeno-canto.org/sounds/uploaded/MMEJYLOPDO/XC496049-Pilgrimsfalk_06.mp3'
     },
@@ -236,7 +236,7 @@ const birdsDataEn = [
       id: 5,
       name: 'Hawk',
       species: 'Accipiter gentilis',
-      description: 'All hawks are characterized by wide and short wings. Another distinguishing feature is the white “eyebrows” above the eyes. Slavic warriors placed the image of a hawk on their banners as a symbol of courage, power and ruthlessness towards enemies.',
+      description: 'All hawks are characterized by wide and short wings. Another distinguishing feature is the white ï¿½eyebrowsï¿½ above the eyes. Slavic warriors placed the image of a hawk on their banners as a symbol of courage, power and ruthlessness towards enemies.',
       image: 'https://live.staticflickr.com//65535//49024617331_b9d0d2c9b3.jpg',
       audio: 'https://www.xeno-canto.org/sounds/uploaded/MMEJYLOPDO/XC512740-Duvh%C3%B6k_09.mp3'
     },
@@ -265,7 +265,7 @@ const birdsDataEn = [
       description: 'A feature of the blue-footed gannet is not only the rich bright blue color of the legs, but also the fact that they are very warm. While other species of birds warm the clutches with their bodies, the blue-footed booby does this with the help of its paws.',
       image: 'https://live.staticflickr.com/800/40645471394_4422e69ed8.jpg',
       audio: 'https://www.xeno-canto.org/sounds/uploaded/YHKQPPJDVP/XC411507-171217_1491%20BF%20Booby%205ft%20IDLP%201230%20mp3%20amp.mp3'
-    },    
+    },
     {
       id: 3,
       name: 'Petrel',
@@ -279,7 +279,7 @@ const birdsDataEn = [
       name: 'Pelican',
       species: 'Pelecanus',
       description: 'Pelicans are inhabitants of the seas and rivers. They walk awkwardly, but fly and swim well. They feed mainly on fish, organize collective hunts - lining up in a semicircle, they flap their wings and beaks on the water and force out the frightened fish in shallow water.',
-      image: 'https://live.staticflickr.com/65535/49159147156_dcbbb5c12a.jpg',
+      image: 'https://live.staticflickr.com/8722/16166393763_115e41c6be.jpg',
       audio: 'https://www.xeno-canto.org/sounds/uploaded/XAMHIHFTZG/XC331138-call1.mp3'
     },
     {
