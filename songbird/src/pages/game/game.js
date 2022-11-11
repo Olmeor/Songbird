@@ -135,7 +135,9 @@ function checkRandomBird(e) {
   let birdNum = e.target.closest(".game-bird__item");
   let birdChoice = e.path[0].id.slice(-1);
 
-  if (!birdNum) { return; }
+  if (!birdNum || birdNum.firstChild.classList.contains("_error")) {
+    return;
+  }
   addSolution(birdChoice);
 
   if (birdNum.lastChild.textContent == birdsData[questionIndex][randomBird].name) {
