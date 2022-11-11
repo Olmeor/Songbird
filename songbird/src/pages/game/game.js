@@ -94,12 +94,12 @@ function resetSolution() {
   birdPlayer[1].classList.add('hidden-block');
   const birdDesc = document.querySelector(".game-bird__description");
   birdDesc.textContent = "";
-  birdDesc.classList.add('hidden-block');
-  const verticalLayout = document.querySelector(".game-bird__container");
-  verticalLayout.style.flexDirection = "column";
-  verticalLayout.style.alignItems = "center";
-  const birdTitle = document.querySelector(".game-bird__title");
-  birdTitle.style.width = "100%";
+  // birdDesc.classList.add('hidden-block');
+  // const verticalLayout = document.querySelector(".game-bird__container");
+  // verticalLayout.style.flexDirection = "column";
+  // verticalLayout.style.alignItems = "center";
+  // const birdTitle = document.querySelector(".game-bird__title");
+  // birdTitle.style.width = "100%";
 }
 
 function addSolution(birdChoice) {
@@ -115,16 +115,22 @@ function addSolution(birdChoice) {
   const birdDesc = document.querySelector(".game-bird__description");
   birdDesc.textContent = `${birdsData[questionIndex][birdChoice].description}`;
   birdDesc.classList.remove('hidden-block');
-  const verticalLayout = document.querySelector(".game-bird__container");
-  verticalLayout.style.flexDirection = "row";
-  verticalLayout.style.alignItems = "left";
-  const birdTitle = document.querySelector(".game-bird__title");
-  birdTitle.style.width = "calc(100% - 200px - 20px)";
+  // const verticalLayout = document.querySelector(".game-bird__container");
+  // verticalLayout.style.alignItems = "left";
+  // const birdTitle = document.querySelector(".game-bird__title");
+
+  // if (innerWidth > 620) {
+  //   verticalLayout.style.flexDirection = "row";
+  //   birdTitle.style.width = "calc(100% - 200px - 20px)";
+  // } else {
+  //   verticalLayout.style.flexDirection = "column";
+  //   birdTitle.style.width = "100%";
+  // }
 }
 
 function checkRandomBird(e) {
   let birdNum = e.target.closest(".game-bird__item");
-  let birdChoice = e.path[0].id.slice(-1)
+  let birdChoice = e.path[0].id.slice(-1);
 
   if (!birdNum) { return; }
   addSolution(birdChoice);

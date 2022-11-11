@@ -14,7 +14,7 @@
 }
 
 .game__header {
-  background: #0081A7;
+  background: #0081A799;
   display: flex;
   justify-content: space-around;
   flex-wrap: wrap;
@@ -44,7 +44,7 @@
 }
 
 .game-random {
-  background: #0081A7;
+  background: #0081A799;
   border-radius: 10px;
   width: 100%;
   margin-bottom: 30px;
@@ -85,7 +85,7 @@
 
 .game-bird__list {
   flex: 0 1 35%;
-  background: #0081A7;
+  background: #0081A799;
   border-radius: 10px;
   /* padding: 0 15px; */
   display: flex;
@@ -150,7 +150,7 @@
 
 .game-bird__inner {
   flex: 0 1 65%;
-  background: #0081A7;
+  background: #0081A799;
   border-radius: 10px;
   padding: 15px;
   min-height: 381.28px;
@@ -197,7 +197,7 @@
 .game__footer {
   margin-top: 30px;
   padding-top: 5px;
-  background: #0081A7;
+  background: #0081A799;
   height: 55px;
   border-radius: 10px;
   text-align: center;
@@ -261,7 +261,7 @@
 
 }
 
-@media screen and (max-width: 620px) {
+@media screen and (max-width: 640px) {
 
   .game-random__inner {
     flex-direction: column-reverse;
