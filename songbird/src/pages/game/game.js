@@ -5,10 +5,11 @@ import '../../assets/styles/header.css'
 import '../../assets/styles/footer.css'
 import './game.css'
 import './player.css'
+import './win_popup.css'
 
 import birdsData from '../../assets/js/birds'
-
 import { burgerOpen, openBurger, closeBurger } from '../../assets/js/burger'
+import { winPopupOpen, winPopupClose} from './win_popup'
 
 burgerOpen.onclick = openBurger;
 document.onclick = closeBurger;
@@ -17,14 +18,15 @@ document.onclick = closeBurger;
 
 let randomBird = getRandomNum();
 let questionIndex = 0;
-let gameScore = 0;
+export let gameScore = 0;
 let currentScore = 5;
 
 function getRandomNum(num = 6) {
   return Math.floor(Math.random() * num); // 0 - num-1
 }
 
-function initLevel() {
+export function initLevel() {
+  winPopupClose();
   const gameBirdList = document.querySelector(".game-bird__list");
   gameBirdList.textContent = '';
 
@@ -40,6 +42,7 @@ function initLevel() {
   }
 
   const nextButton = document.querySelector(".game__footer-button");
+  nextButton.textContent = "Следующий вопрос";
   if (!nextButton.hasAttribute("disabled")) {
     nextButton.disabled = true;
   }
@@ -94,7 +97,7 @@ function resetSolution() {
   birdPlayer[1].classList.add('hidden-block');
   const birdDesc = document.querySelector(".game-bird__description");
   birdDesc.textContent = "";
-  // birdDesc.classList.add('hidden-block');
+  // birdDesc.classList.add('hidden-block'); // need resize for Student 1
   // const verticalLayout = document.querySelector(".game-bird__container");
   // verticalLayout.style.flexDirection = "column";
   // verticalLayout.style.alignItems = "center";
@@ -136,7 +139,6 @@ function checkRandomBird(e) {
   addSolution(birdChoice);
 
   if (birdNum.lastChild.textContent == birdsData[questionIndex][randomBird].name) {
-    console.log('true');
     addWinLevel(birdNum);
     gameScore += currentScore;
     currentScore = 5;
@@ -144,13 +146,14 @@ function checkRandomBird(e) {
     score.lastChild.textContent = `${gameScore}`;
     if (questionIndex < 5) {
       questionIndex+= 5;
+      playTrue();
     } else {
       initWin();
+      winPopupOpen();
+      playWin();
     }
-    playTrue();
     randomBird = getRandomNum();
   } else {
-    console.log('false');
     birdNum.firstChild.classList.add("_error");
     currentScore--;
     playFalse();
@@ -214,5 +217,11 @@ function playFalse() {
 function playTrue() {
   let audio = new Audio();
   audio.src = '../../assets/sounds/true.mp3';
+  audio.play();
+}
+
+function playWin() {
+  let audio = new Audio();
+  audio.src = '../../assets/sounds/win.mp3';
   audio.play();
 }

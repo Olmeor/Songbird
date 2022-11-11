@@ -20,7 +20,7 @@
   flex-wrap: wrap;
   border-radius: 10px;
   width: 100%;
-  margin-bottom: 30px;
+  margin-bottom: 20px;
   padding: 0 10px;
   gap: 5px;
 }
@@ -47,7 +47,7 @@
   background: #0081A799;
   border-radius: 10px;
   width: 100%;
-  margin-bottom: 30px;
+  margin-bottom: 20px;
   padding: 15px;
   display: flex;
   gap: 30px;
@@ -80,7 +80,7 @@
 
 .game-bird__wrapper {
   display: flex;
-  gap: 30px;
+  gap: 20px;
 }
 
 .game-bird__list {
@@ -153,7 +153,7 @@
   background: #0081A799;
   border-radius: 10px;
   padding: 15px;
-  min-height: 381.28px;
+  min-height: 400px;
 }
 
 .game-bird__container {
@@ -171,6 +171,9 @@
 
 .game-bird__title {
   width: calc(100% - 200px - 20px);
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
 }
 
 .game-bird__name {
@@ -195,16 +198,17 @@
 }
 
 .game__footer {
-  margin-top: 30px;
-  padding-top: 5px;
+  margin-top: 20px;
+  padding-top: 10px;
   background: #0081A799;
-  height: 55px;
+  height: 65px;
   border-radius: 10px;
   text-align: center;
   vertical-align: middle;
 }
 
-.game__footer-button {
+.game__footer-button,
+.game__popup-button {
   width: 300px;
   height: 45px;
   background-color: #F07167;
@@ -220,14 +224,16 @@
   transform: scale(1.0);
 }
 
-.game__footer-button:hover {
+.game__footer-button:hover,
+.game__popup-button:hover {
   background: #FED9B7;
   transition: all 0.4s ease;
   color: #00AFB9;
   transform: scale(1.05);
 }
 
-.game__footer-button:active {
+.game__footer-button:active,
+.game__popup-button:active {
   background: #00AFB9;
   transition: all 0.4s ease;
   color: #FED9B7;
@@ -276,6 +282,7 @@
   .game-bird__title {
     width: 100%;
   }
+
 }
 
 @media screen and (max-width: 480px) {
@@ -296,6 +303,7 @@
     gap: 15px;
     flex-direction: column;
     align-items: center;
+    position: relative;
   }
 
   .game-random__desc {
@@ -315,7 +323,8 @@
     margin-top: 15px;
   }
 
-  .game__footer-button {
+  .game__footer-button,
+  .game__popup-button {
     width: 250px;
   }
 
