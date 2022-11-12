@@ -213,8 +213,7 @@
   vertical-align: middle;
 }
 
-.game__footer-button,
-.game__popup-button {
+.game__footer-button {
   width: 300px;
   height: 45px;
   background-color: #F07167;
@@ -230,24 +229,21 @@
   transform: scale(1.0);
 }
 
-.game__footer-button:hover,
-.game__popup-button:hover {
+.game__footer-button:hover {
   background: #FED9B7;
   transition: all 0.4s ease;
   color: #00AFB9;
   transform: scale(1.05);
 }
 
-.game__footer-button:active,
-.game__popup-button:active {
+.game__footer-button:active {
   background: #00AFB9;
   transition: all 0.4s ease;
   color: #FED9B7;
   transform: scale(1.0);
 }
 
-.game__footer-button:disabled,
-.game__footer-button[disabled] {
+.game__footer-button:disabled {
   background-color: #CCCCCC;
   color: #666666;
   transform: scale(1.0);
@@ -329,8 +325,7 @@
     margin-top: 15px;
   }
 
-  .game__footer-button,
-  .game__popup-button {
+  .game__footer-button {
     width: 250px;
   }
 

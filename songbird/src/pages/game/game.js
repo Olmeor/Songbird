@@ -5,12 +5,11 @@ import '../../assets/styles/header.css'
 import '../../assets/styles/footer.css'
 import './game.css'
 import './player.css'
-import './win_popup.css'
 
 import birdsData from '../../assets/js/birds'
 import { burgerOpen, openBurger, closeBurger } from '../../assets/js/burger'
 import { setDurationTime } from './player'
-import { winPopupOpen, winPopupClose} from './win_popup'
+import { changeOutputScore, outputScore, showWin } from '../result/result'
 
 burgerOpen.onclick = openBurger;
 document.onclick = closeBurger;
@@ -21,14 +20,12 @@ export let randomBird = getRandomNum();
 export let questionIndex = 0;
 export let gameScore = 0;
 let currentScore = 5;
-export let winGame = false;
 
 function getRandomNum(num = 6) {
   return Math.floor(Math.random() * num); // 0 - num-1
 }
 
 export function initLevel() {
-  winPopupClose();
   const gameBirdList = document.querySelector(".game-bird__list");
   gameBirdList.textContent = '';
   if (!questionIndex) { resetScore() };
@@ -144,9 +141,10 @@ function checkRandomBird(e) {
     } else {
       initWin();
       playWin();
-      winPopupOpen();
-      // window.location.href = "result.html";
-      winGame = true;
+      changeOutputScore(gameScore);
+      window.location.href = "result.html";
+      // showWin(gameScore);
+
     }
     randomBird = getRandomNum();
   } else {
