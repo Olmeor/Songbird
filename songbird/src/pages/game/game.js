@@ -9,6 +9,7 @@ import './win_popup.css'
 
 import birdsData from '../../assets/js/birds'
 import { burgerOpen, openBurger, closeBurger } from '../../assets/js/burger'
+import { setDurationTime } from './player'
 import { winPopupOpen, winPopupClose} from './win_popup'
 
 burgerOpen.onclick = openBurger;
@@ -16,10 +17,11 @@ document.onclick = closeBurger;
 
 
 
-let randomBird = getRandomNum();
-let questionIndex = 0;
+export let randomBird = getRandomNum();
+export let questionIndex = 0;
 export let gameScore = 0;
 let currentScore = 5;
+export let winGame = false;
 
 function getRandomNum(num = 6) {
   return Math.floor(Math.random() * num); // 0 - num-1
@@ -57,6 +59,9 @@ export function initLevel() {
 
   resetBird();
   resetSolution();
+
+  const audioDurationTime = document.querySelector(".play-duration-time");
+  setDurationTime(audioDurationTime, randomBird);
 }
 
 initLevel();
@@ -99,12 +104,6 @@ function resetSolution() {
   birdPlayer[1].classList.add('hidden-block');
   const birdDesc = document.querySelector(".game-bird__description");
   birdDesc.textContent = "";
-  // birdDesc.classList.add('hidden-block'); // need resize for Student 1
-  // const verticalLayout = document.querySelector(".game-bird__container");
-  // verticalLayout.style.flexDirection = "column";
-  // verticalLayout.style.alignItems = "center";
-  // const birdTitle = document.querySelector(".game-bird__title");
-  // birdTitle.style.width = "100%";
 }
 
 function addSolution(birdChoice) {
@@ -120,17 +119,6 @@ function addSolution(birdChoice) {
   const birdDesc = document.querySelector(".game-bird__description");
   birdDesc.textContent = `${birdsData[questionIndex][birdChoice].description}`;
   birdDesc.classList.remove('hidden-block');
-  // const verticalLayout = document.querySelector(".game-bird__container");
-  // verticalLayout.style.alignItems = "left";
-  // const birdTitle = document.querySelector(".game-bird__title");
-
-  // if (innerWidth > 620) {
-  //   verticalLayout.style.flexDirection = "row";
-  //   birdTitle.style.width = "calc(100% - 200px - 20px)";
-  // } else {
-  //   verticalLayout.style.flexDirection = "column";
-  //   birdTitle.style.width = "100%";
-  // }
 }
 
 function checkRandomBird(e) {
@@ -141,6 +129,8 @@ function checkRandomBird(e) {
     return;
   }
   addSolution(birdChoice);
+  const audioDurationTime = document.querySelector(".play-duration-time_current");
+  setDurationTime(audioDurationTime, birdChoice);
 
   if (birdNum.lastChild.textContent == birdsData[questionIndex][randomBird].name) {
     addWinLevel(birdNum);
@@ -153,8 +143,10 @@ function checkRandomBird(e) {
       playTrue();
     } else {
       initWin();
-      winPopupOpen();
       playWin();
+      winPopupOpen();
+      // window.location.href = "result.html";
+      winGame = true;
     }
     randomBird = getRandomNum();
   } else {
@@ -189,28 +181,9 @@ function initWin () {
 
 // Player
 
-function setDurationTime() {
-  const audioDurationTime = document.querySelector(".play-duration-time");
 
-  let audio = new Audio();
-  audio.src = `${birdsData[questionIndex][randomBird].audio}`;
 
-  audio.onloadedmetadata = function() {
-    let duration = audio.duration;
-    audioDurationTime.textContent = convertTime(Math.round(duration));
-  };
-}
-
-function convertTime(duration) {
-  let minutes, seconds, minutesString, secondsString;
-  minutes = Math.floor(duration / 60);
-  seconds = Math.floor(duration % 60);
-  minutesString = (minutes < 10) ? "0" + String(minutes) : String(minutes);
-  secondsString = (seconds < 10) ? "0" + String(seconds) : String(seconds);
-  return `${minutesString}:${secondsString}`;
-}
-
-setDurationTime();
+// setDurationTime();
 
 function playFalse() {
   let audio = new Audio();
