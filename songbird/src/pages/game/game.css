@@ -28,7 +28,7 @@
 .game__item {
   flex: 0 1 12.5%;
   margin: 10px 0px;
-  padding: 5px 3px;
+  padding: 5px;
   font-size: 1.1rem;
   font-weight: 700;
   white-space: nowrap;
@@ -38,8 +38,9 @@
 }
 
 .game__item_active {
-  background: #00AFB9;
-  color: #FED9B7;
+  /* background: #00AFB9; */
+  background: #0081A7;
+  /* color: #FED9B7; */
   transition: all 0.4s ease;
 }
 
@@ -68,7 +69,8 @@
 .game-random__inner {
   display: flex;
   justify-content: space-between;
-  border-bottom: 2px solid #00AFB9;
+  /* border-bottom: 2px solid #00AFB9; */
+  border-bottom: 2px solid #0081A7;
 }
 
 .game-random__header,
@@ -94,7 +96,8 @@
 
 .game-bird__item {
   flex: 1 1 auto;
-  border-bottom: 2px solid #00AFB9;
+  /* border-bottom: 2px solid #00AFB9; */
+  border-bottom: 2px solid #0081A7;
   display: flex;
   align-items: center;
   font-size: 1.2rem;
@@ -110,7 +113,8 @@
 .game-bird__item:hover {
   color: #FED9B7;
   transition: all 0.4s ease;
-  background-color: #00AFB9;
+  /* background-color: #00AFB9; */
+  background-color: #0081A7;
 }
 
 .game-bird__button {
@@ -178,7 +182,8 @@
 
 .game-bird__name {
   text-align: center;
-  border-bottom: 2px solid #00AFB9;
+  /* border-bottom: 2px solid #00AFB9; */
+  border-bottom: 2px solid #0081A7;
   font-size: 1.2rem;
   font-weight: 700;
   width: 100%;
@@ -188,7 +193,8 @@
 
 .game-bird__species {
   text-align: center;
-  border-bottom: 2px solid #00AFB9;
+  /* border-bottom: 2px solid #00AFB9; */
+  border-bottom: 2px solid #0081A7;
   font-weight: 500;
   padding-bottom: 7px;
 }
