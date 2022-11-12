@@ -29,6 +29,7 @@ export function initLevel() {
   winPopupClose();
   const gameBirdList = document.querySelector(".game-bird__list");
   gameBirdList.textContent = '';
+  if (!questionIndex) { resetScore() };
 
   for (let i = 0; i < 6; i++) {
     const li = document.createElement("li");
@@ -72,6 +73,7 @@ function resetLevel() {
 function resetScore() {
   const score = document.querySelector(".game-random__score");
   score.lastChild.textContent = "0";
+  gameScore = 0;
 }
 
 function resetBird() {
