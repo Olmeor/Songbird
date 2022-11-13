@@ -6,7 +6,6 @@ import '../../assets/styles/footer.css'
 import './result.css'
 
 import { burgerOpen, openBurger, closeBurger } from '../../assets/js/burger'
-// import { gameScore } from '../game/game'
 
 burgerOpen.onclick = openBurger;
 document.onclick = closeBurger;

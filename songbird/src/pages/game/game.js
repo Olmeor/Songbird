@@ -8,8 +8,7 @@ import './player.css'
 
 import birdsData from '../../assets/js/birds'
 import { burgerOpen, openBurger, closeBurger } from '../../assets/js/burger'
-import { setDurationTime } from './player'
-// import { changeOutputScore, outputScore, showWin } from '../result/result'
+import { setDurationTime, initAudio } from './player'
 
 burgerOpen.onclick = openBurger;
 document.onclick = closeBurger;
@@ -18,14 +17,16 @@ document.onclick = closeBurger;
 
 export let randomBird = getRandomNum();
 export let questionIndex = 0;
-export let gameScore = 0;
+let gameScore = 0;
 let currentScore = 5;
 
 function getRandomNum(num = 6) {
-  return Math.floor(Math.random() * num); // 0 - num-1
+  const bird = Math.floor(Math.random() * num); // 0 - num-1
+  localStorage.setItem("randomBird", bird);
+  return bird;
 }
 
-export function initLevel() {
+function initLevel() {
   const gameBirdList = document.querySelector(".game-bird__list");
   gameBirdList.textContent = '';
   if (!questionIndex) { resetScore() };
@@ -57,8 +58,7 @@ export function initLevel() {
   resetBird();
   resetSolution();
 
-  const audioDurationTime = document.querySelector(".play-duration-time");
-  setDurationTime(audioDurationTime, randomBird);
+  setDurationTime("player-1", randomBird);
 }
 
 initLevel();
@@ -126,8 +126,7 @@ function checkRandomBird(e) {
     return;
   }
   addSolution(birdChoice);
-  const audioDurationTime = document.querySelector(".play-duration-time_current");
-  setDurationTime(audioDurationTime, birdChoice);
+  setDurationTime("player-2", birdChoice);
 
   if (birdNum.lastChild.textContent == birdsData[questionIndex][randomBird].name) {
     addWinLevel(birdNum);
@@ -177,13 +176,6 @@ function initWin () {
   questionIndex = 0;
 }
 
-
-// Player
-
-
-
-// setDurationTime();
-
 function playFalse() {
   let audio = new Audio();
   audio.src = '../../assets/sounds/false.mp3';
@@ -196,8 +188,4 @@ function playTrue() {
   audio.play();
 }
 
-function playWin() {
-  let audio = new Audio();
-  audio.src = '../../assets/sounds/win.mp3';
-  audio.play();
-}
+initAudio("player-1");
