@@ -9,7 +9,7 @@ import './player.css'
 import birdsData from '../../assets/js/birds'
 import { burgerOpen, openBurger, closeBurger } from '../../assets/js/burger'
 import { setDurationTime } from './player'
-import { changeOutputScore, outputScore, showWin } from '../result/result'
+// import { changeOutputScore, outputScore, showWin } from '../result/result'
 
 burgerOpen.onclick = openBurger;
 document.onclick = closeBurger;
@@ -139,12 +139,13 @@ function checkRandomBird(e) {
       questionIndex+= 5;
       playTrue();
     } else {
-      initWin();
-      playWin();
-      changeOutputScore(gameScore);
-      window.location.href = "result.html";
-      // showWin(gameScore);
-
+      let promise = new Promise(function(resolve, reject) {
+        initWin();
+        localStorage.setItem("score", gameScore);
+      });
+      promise.then(
+        window.location.href = "result.html"
+      );
     }
     randomBird = getRandomNum();
   } else {

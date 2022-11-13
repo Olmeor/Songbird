@@ -11,18 +11,10 @@ import { burgerOpen, openBurger, closeBurger } from '../../assets/js/burger'
 burgerOpen.onclick = openBurger;
 document.onclick = closeBurger;
 
-let outputScore;
-console.log(outputScore)
-
-export function changeOutputScore(score) {
-  outputScore = score;
-  console.log(outputScore)
-  showWin();
-}
+let outputScore = (localStorage.getItem("score")) ? (localStorage.getItem("score")) : 0;
 
 export function showWin() {
-  console.log(outputScore);
-  if (!outputScore) {
+  if (!(+outputScore)) {
     return;
   }
 
@@ -34,9 +26,11 @@ export function showWin() {
   button.textContent = "Начать заново"
   playWin();
   outputScore = 0;
+  localStorage.setItem("score", 0);
 }
 
-// showWin();
+showWin();
+
 function playWin() {
   let audio = new Audio();
   audio.src = '../../assets/sounds/win.mp3';
