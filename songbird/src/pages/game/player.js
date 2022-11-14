@@ -6,28 +6,27 @@ let currentTimeValue = 0;
 let currentVolume;
 const audio = new Audio();
 
-function playAudio(event, player = "player-1", bird = localStorage.getItem("randomBird")) {
-  // const audio = new Audio();
-  const audioVolume = document.querySelector(`.${player} .vol-line`);
+function playAudio() {
+  let bird = localStorage.getItem("randomBird")
+  const audioVolume = document.querySelector(".player-1 .vol-line");
 
   audio.src = `${birdsData[questionIndex][bird].audio}`;
   audio.currentTime = currentTimeValue;
-  // setDurationTime(player, bird);
   if (!isPlay) {
     isPlay = true;
     audio.play();
     audio.volume = audioVolume.value/100;
-    setCurrentTime(player);
+    setCurrentTime();
   } else {
     isPlay = false;
     audio.pause();
   }
 }
 
-export function setDurationTime(player = "player-1", bird = localStorage.getItem("randomBird")) {
+export function setDurationTime(bird = localStorage.getItem("randomBird")) {
   let audio = new Audio();
   audio.src = `${birdsData[questionIndex][bird].audio}`;
-  const audioDurationTime = document.querySelector(`.${player} .play-duration-time`);
+  const audioDurationTime = document.querySelector(`.player-1 .play-duration-time`);
 
   audio.onloadedmetadata = function() {
     let duration = audio.duration;
@@ -44,75 +43,54 @@ function convertTime(duration) {
   return `${minutesString}:${secondsString}`;
 }
 
-function setCurrentTime(player = "player-1") {
-  if (player) {
-    localStorage.setItem("player", player);
-  }
-  let newPlayer = localStorage.getItem("player");
-  const audioCurrentTime = document.querySelector(`.${newPlayer} .play-current-time`);
+function setCurrentTime() {
+  const audioCurrentTime = document.querySelector(".player-1 .play-current-time");
   audioCurrentTime.textContent = convertTime(currentTimeValue);
   setTimeout(setCurrentTime, 500);
 }
 
-function toggleButton(event, player = "player-1") {
-  const audioPlayButton = document.querySelector(`.${player} .play`);
+function toggleButton() {
+  const audioPlayButton = document.querySelector(".player-1 .play");
   audioPlayButton.classList.toggle("pause");
 }
 
-function muteAudio(event, player = "player-1") {
-  const audioVolume = document.querySelector(`.${player} .vol-line`);
-  const volumeButton = document.querySelector(`.${player} .vol-mute`);
+function muteAudio() {
+  const audioVolume = document.querySelector(".player-1 .vol-line");
+  const volumeButton = document.querySelector(".player-1 .vol-mute");
   if (audioVolume.value > 0) {
       currentVolume = audioVolume.value;
       audioVolume.value = 0;
       volumeButton.classList.add("mute-icon");
-      setValue(player);
+      setValue();
   } else {
       audioVolume.value = currentVolume;
       volumeButton.classList.remove("mute-icon");
-      setValue(player);
+      setValue();
   }
 }
 
-function setValue(event, player = "player-1") {
+function setValue() {
   // const audio = new Audio();
-  const audioVolume = document.querySelector(`.${player} .vol-line`);
+  const audioVolume = document.querySelector(".player-1 .vol-line");
   audio.volume = audioVolume.value / 100;
 }
 
-// function setProgress(event, player = "player-1") {
-//   const audioDuration = audio.duration;
-//   const audioProgress = document.querySelector(`.${player} .progress-bar`);
-//   if (!isNaN(audioDuration)) {
-//     audio.currentTime = audioProgress.value / 100 * audioDuration;
-//   }
-//   audio.addEventListener('timeupdate', renewProgress);
-// }
-
-function setProgress(event, player = "player-1") {
+function setProgress(e) {
   let bird = localStorage.getItem("randomBird");
   audio.src = `${birdsData[questionIndex][bird].audio}`;
   let audioDuration
-  const audioDurationTime = document.querySelector(`.${player} .play-duration-time`);
-  const audioProgress = document.querySelector(`.${player} .progress-bar`);
-  const audioCurrentTime = document.querySelector(`.${player} .play-current-time`);
-  console.log("audio.currentTime", audio.currentTime)
-  console.log("audioDuration",audioDuration)
-  console.log("event",event.target.value)
+  const audioDurationTime = document.querySelector(".player-1 .play-duration-time");
+  const audioProgress = document.querySelector(".player-1 .progress-bar");
+  const audioCurrentTime = document.querySelector(".player-1 .play-current-time");
 
-  let promise = new Promise(function(resolve, reject) {
+  let promise = new Promise(function() {
     audio.onloadedmetadata = function() {
-      console.log(2222, player)
       audioDuration = audio.duration;
       let duration;
-      audio.currentTime = (event.target.value/100)*audio.duration
-      console.log(audioDuration, audioProgress)
+      audio.currentTime = (e.target.value/100)*audio.duration
       audioDuration = audio.duration;
       audioDurationTime.textContent = convertTime(Math.round(audioDuration));
-      console.log("audioCurrentTime",audioCurrentTime)
       setTimeout(setCurrentTime, 500);
-      console.log("convertTime(Math.round(audio.currentTime))",convertTime(Math.round(audio.currentTime)))
-      console.log("audioDuration",audioDuration)
       duration = audioDuration;
     };
   });
@@ -122,7 +100,7 @@ function setProgress(event, player = "player-1") {
       if (!isPlay) {
         isPlay = true;
         toggleButton();
-        const audioVolume = document.querySelector(`.${player} .vol-line`);
+        const audioVolume = document.querySelector(".player-1 .vol-line");
         audio.volume = audioVolume.value/100;
       };
       audio.play();
@@ -130,10 +108,10 @@ function setProgress(event, player = "player-1") {
   );
 }
 
-function renewProgress(elem, player = "player-1") {
-  const {currentTime, duration} = elem.target;
+function renewProgress(e) {
+  const {currentTime, duration} = e.target;
   const currentValue = currentTime / duration * 100;
-  const audioProgress = document.querySelector(`.${player} .progress-bar`);
+  const audioProgress = document.querySelector(".player-1 .progress-bar");
   if (!isNaN(currentValue))  {
       currentTimeValue = currentTime;
       audioProgress.value = currentValue;
@@ -148,22 +126,19 @@ export function endAudio() {
   audio.pause();
 }
 
-export function initAudio(player) {
-  // const audio = new Audio();
-  const audioPlayButton = document.querySelector(`.${player} .play`);
-  const volumeButton = document.querySelector(`.${player} .vol-mute`);
-  const audioProgress = document.querySelector(`.${player} .progress-bar`);
-  const audioVolume = document.querySelector(`.${player} .vol-line`);
+export function initAudio() {
+  const audioPlayButton = document.querySelector(".player-1 .play");
+  const volumeButton = document.querySelector(".player-1 .vol-mute");
+  const audioProgress = document.querySelector(".player-1 .progress-bar");
+  const audioVolume = document.querySelector(".player-1 .vol-line");
 
-  audioPlayButton.addEventListener('click', playAudio);
-  audioPlayButton.addEventListener('click', toggleButton);
-  volumeButton.addEventListener('click', muteAudio);
-  audioVolume.addEventListener('change', setValue);
-  audioProgress.addEventListener('change', setProgress);
-  audio.addEventListener('timeupdate', renewProgress);
-  // audioProgress.oninput = function() {
-  //   audio.removeEventListener('timeupdate', renewProgress);
-  // }
-  // audio.addEventListener('ended', toggleButton);
-  audio.addEventListener('ended', endAudio);
+  audioPlayButton.onclick = function() {
+    playAudio();
+    toggleButton();
+  }
+  volumeButton.onclick = muteAudio;
+  audioVolume.onchange = setValue;
+  audioProgress.onchange = setProgress;
+  audio.ontimeupdate = renewProgress;
+  audio.onended = endAudio;
 }

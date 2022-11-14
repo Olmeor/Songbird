@@ -61,7 +61,7 @@ function initLevel() {
   resetBird();
   resetSolution();
 
-  setDurationTime("player-1", randomBird);
+  setDurationTime(randomBird);
 }
 
 initLevel();
@@ -193,4 +193,4 @@ function playTrue() {
   audio.play();
 }
 
-initAudio("player-1");
+initAudio();
