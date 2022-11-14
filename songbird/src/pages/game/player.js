@@ -81,52 +81,13 @@ function setValue(event, player = "player-1") {
 }
 
 function setProgress(event, player = "player-1") {
-  console.log(2222, player)
   const audioDuration = audio.duration;
   const audioProgress = document.querySelector(`.${player} .progress-bar`);
-  console.log(audioDuration, audioProgress)
   if (!isNaN(audioDuration)) {
     audio.currentTime = audioProgress.value / 100 * audioDuration;
-    console.log(1111)
   }
   audio.addEventListener('timeupdate', renewProgress);
 }
-
-// function setProgress(event, player = "player-1") {
-//   console.log(2222, player)
-//   let audioDuration = audio.duration;
-//   let duration;
-//   const audioProgress = document.querySelector(`.${player} .progress-bar`);
-//   const audioCurrentTime = document.querySelector(`.${player} .play-current-time`);
-//   console.log(audioDuration, audioProgress)
-  // if (isNaN(audioDuration)) {
-  //   let bird = localStorage.getItem("randomBird");
-  //   audio.src = `${birdsData[questionIndex][bird].audio}`;
-
-  //   audio.onloadedmetadata = function() {
-  //     audioDuration = audio.duration;
-  //     audioDurationTime.textContent = convertTime(Math.round(audioDuration));
-  //     console.log(audioDuration)
-  //     duration = audioDuration;
-
-  //   };
-  //   console.log(duration)
-  // }
-
-//   if (isNaN(audioDuration)) {
-//     let bird = localStorage.getItem("randomBird");
-//     audio.src = `${birdsData[questionIndex][bird].audio}`;
-
-//     let promise = new Promise(function(resolve, reject) {
-//       setTimeout(audio.play(), 50);
-//     });
-//     promise.then(audio.pause());
-//     audioDuration = audio.duration;
-//   }
-//   console.log(audioProgress.value, audioDuration, duration)
-//   audio.currentTime = audioProgress.value / 100 * audioDuration;
-//   audio.addEventListener('timeupdate', renewProgress);
-// }
 
 function renewProgress(elem, player = "player-1") {
   const {currentTime, duration} = elem.target;

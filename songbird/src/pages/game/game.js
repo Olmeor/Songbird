@@ -105,6 +105,8 @@ function resetSolution() {
 
 function addSolution(birdChoice) {
   const birdName = document.querySelector(".game-bird__name");
+  // console.log(birdName)
+  // console.log(questionIndex, birdChoice)
   birdName.textContent = `${birdsData[questionIndex][birdChoice].name}`;
   const birdSubName = document.querySelector(".game-bird__species");
   birdSubName.textContent = `${birdsData[questionIndex][birdChoice].species}`;
@@ -120,8 +122,7 @@ function addSolution(birdChoice) {
 
 function checkRandomBird(e) {
   let birdNum = e.target.closest(".game-bird__item");
-  let birdChoice = e.path[0].id.slice(-1);
-
+  let birdChoice = birdNum.id.slice(-1);
   if (!birdNum || birdNum.firstChild.classList.contains("_error")) {
     return;
   }
