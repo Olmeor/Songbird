@@ -1,5 +1,5 @@
 import birdsData from '../../assets/js/birds'
-import { questionIndex, randomBird } from './game';
+import { questionIndex } from './game';
 
 let isPlay = false;
 let currentTimeValue = 0;
@@ -9,7 +9,7 @@ const audio = new Audio();
 function playAudio() {
   let bird = localStorage.getItem("randomBird")
   const audioVolume = document.querySelector(".player-1 .vol-line");
-
+  console.log(birdsData[questionIndex][bird].name)
   audio.src = `${birdsData[questionIndex][bird].audio}`;
   audio.currentTime = currentTimeValue;
   if (!isPlay) {
@@ -70,7 +70,6 @@ function muteAudio() {
 }
 
 function setValue() {
-  // const audio = new Audio();
   const audioVolume = document.querySelector(".player-1 .vol-line");
   audio.volume = audioVolume.value / 100;
 }
@@ -119,9 +118,13 @@ function renewProgress(e) {
 }
 
 export function endAudio() {
+  const audioPlayButton = document.querySelector(".player-1 .play");
+  if (audioPlayButton.classList.contains("pause")) {
+    toggleButton();
+  }
   isPlay = false;
   currentTimeValue = 0;
-  toggleButton();
+  // toggleButton();
   audio.currentTime = 0;
   audio.pause();
 }

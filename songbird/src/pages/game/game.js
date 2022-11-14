@@ -9,17 +9,15 @@ import './player.css'
 import birdsData from '../../assets/js/birds'
 import { burgerOpen, openBurger, closeBurger } from '../../assets/js/burger'
 import { setDurationTime, initAudio, endAudio } from './player'
+import { setDurationTimeDesc, initAudioDesc, endAudioDesc, resetAudioDesc } from './playerDesc'
 
 burgerOpen.onclick = openBurger;
 document.onclick = closeBurger;
 
-
-
-// export let randomBird = getRandomNum();
-export let randomBird = 0;
+export let randomBird = getRandomNum();
 export let questionIndex = 0;
 let gameScore = 0;
-let currentScore = 5;
+let currentScore;
 let isWin = false;
 
 function getRandomNum(num = 6) {
@@ -29,6 +27,7 @@ function getRandomNum(num = 6) {
 }
 
 function initLevel() {
+  currentScore = 5;
   isWin = false;
   const gameBirdList = document.querySelector(".game-bird__list");
   gameBirdList.textContent = '';
@@ -93,6 +92,8 @@ resetBird();
 resetScore();
 
 function resetSolution() {
+  endAudioDesc();
+  resetAudioDesc();
   const birdName = document.querySelector(".game-bird__name");
   birdName.textContent = "Прослушайте голос птицы";
   const birdSubName = document.querySelector(".game-bird__species");
@@ -108,6 +109,7 @@ function resetSolution() {
 }
 
 function addSolution(birdChoice) {
+  endAudioDesc();
   const birdName = document.querySelector(".game-bird__name");
   birdName.textContent = `${birdsData[questionIndex][birdChoice].name}`;
   const birdSubName = document.querySelector(".game-bird__species");
@@ -121,27 +123,26 @@ function addSolution(birdChoice) {
   birdDesc.style.overflowY = "scroll";
   birdDesc.textContent = `${birdsData[questionIndex][birdChoice].description}`;
   birdDesc.classList.remove('hidden-block');
+  initAudioDesc();
 }
 
 function checkRandomBird(e) {
   let birdNum = e.target.closest(".game-bird__item");
   let birdChoice = birdNum.id.slice(-1);
+  localStorage.setItem("chosenBird", birdChoice);
 
   addSolution(birdChoice);
-  setDurationTime("player-2", birdChoice);
+  setDurationTimeDesc(birdChoice);
 
   if (birdNum.lastChild.textContent == birdsData[questionIndex][randomBird].name) {
     addWinLevel(birdNum);
-    gameScore += currentScore;
-    currentScore = 5;
-    const score = document.querySelector(".game-random__score");
-    score.lastChild.textContent = `${gameScore}`;
-    if (questionIndex < 5) {
-      questionIndex+= 5;
+    if (questionIndex < 5 && (!isWin)) {
+      gameScore += currentScore;
       playTrue();
       endAudio();
       isWin = true;
-    } else {
+    } else if (questionIndex = 5 && (!isWin)) {
+      gameScore += currentScore;
       playTrue();
       endAudio();
       isWin = true;
@@ -154,10 +155,17 @@ function checkRandomBird(e) {
     currentScore--;
     playFalse();
   }
+  const score = document.querySelector(".game-random__score");
+  score.lastChild.textContent = `${gameScore}`;
 }
 
 const nextButton = document.querySelector(".game__footer-button");
-nextButton.onclick = initLevel;
+nextButton.onclick = function() {
+  questionIndex = (questionIndex == 5) ? 0 : ++questionIndex;
+  initLevel();
+  endAudio();
+  endAudioDesc();
+};
 
 function addWinLevel(birdNum) {
   const choiceBird = document.querySelectorAll(".game-bird__item");
@@ -178,7 +186,7 @@ function showResult() {
 function initWin() {
   const nextButton = document.querySelector(".game__footer-button");
   nextButton.textContent = "Результат";
-  questionIndex = 0;
+  // questionIndex = 0;
 }
 
 function playFalse() {
