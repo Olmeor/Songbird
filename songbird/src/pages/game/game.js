@@ -8,7 +8,7 @@ import './player.css'
 
 import birdsData from '../../assets/js/birds'
 import { burgerOpen, openBurger, closeBurger } from '../../assets/js/burger'
-import { setDurationTime, initAudio } from './player'
+import { setDurationTime, initAudio, endAudio } from './player'
 
 burgerOpen.onclick = openBurger;
 document.onclick = closeBurger;
@@ -138,6 +138,7 @@ function checkRandomBird(e) {
     if (questionIndex < 5) {
       questionIndex+= 5;
       playTrue();
+      endAudio();
     } else {
       let promise = new Promise(function(resolve, reject) {
         initWin();

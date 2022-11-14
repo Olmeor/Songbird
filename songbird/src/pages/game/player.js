@@ -99,7 +99,7 @@ function setProgress(event, player = "player-1") {
   console.log("audio.currentTime", audio.currentTime)
   console.log("audioDuration",audioDuration)
   console.log("event",event.target.value)
-  
+
   let promise = new Promise(function(resolve, reject) {
     audio.onloadedmetadata = function() {
       console.log(2222, player)
@@ -140,6 +140,14 @@ function renewProgress(elem, player = "player-1") {
   }
 }
 
+export function endAudio() {
+  isPlay = false;
+  currentTimeValue = 0;
+  toggleButton();
+  audio.currentTime = 0;
+  audio.pause();
+}
+
 export function initAudio(player) {
   // const audio = new Audio();
   const audioPlayButton = document.querySelector(`.${player} .play`);
@@ -156,5 +164,6 @@ export function initAudio(player) {
   // audioProgress.oninput = function() {
   //   audio.removeEventListener('timeupdate', renewProgress);
   // }
-  audio.addEventListener('ended', toggleButton);
+  // audio.addEventListener('ended', toggleButton);
+  audio.addEventListener('ended', endAudio);
 }
