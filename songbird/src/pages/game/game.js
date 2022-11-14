@@ -20,6 +20,7 @@ export let randomBird = 0;
 export let questionIndex = 0;
 let gameScore = 0;
 let currentScore = 5;
+let isWin = false;
 
 function getRandomNum(num = 6) {
   const bird = Math.floor(Math.random() * num); // 0 - num-1
@@ -28,6 +29,7 @@ function getRandomNum(num = 6) {
 }
 
 function initLevel() {
+  isWin = false;
   const gameBirdList = document.querySelector(".game-bird__list");
   gameBirdList.textContent = '';
   if (!questionIndex) { resetScore() };
@@ -123,9 +125,9 @@ function checkRandomBird(e) {
   let birdNum = e.target.closest(".game-bird__item");
   let birdChoice = birdNum.id.slice(-1);
 
-  if (!birdNum || birdNum.firstChild.classList.contains("_error")) {
-    return;
-  }
+  // if (!birdNum || birdNum.firstChild.classList.contains("_error")) {
+  //   return;
+  // }
   addSolution(birdChoice);
   setDurationTime("player-2", birdChoice);
 
@@ -139,6 +141,7 @@ function checkRandomBird(e) {
       questionIndex+= 5;
       playTrue();
       endAudio();
+      isWin = true;
     } else {
       let promise = new Promise(function(resolve, reject) {
         initWin();
@@ -148,8 +151,8 @@ function checkRandomBird(e) {
         window.location.href = "result.html"
       );
     }
-    randomBird = getRandomNum();
-  } else {
+    // randomBird = getRandomNum();
+  } else if (!isWin) {
     birdNum.firstChild.classList.add("_error");
     currentScore--;
     playFalse();
@@ -161,7 +164,7 @@ nextButton.onclick = initLevel;
 
 function addWinLevel(birdNum) {
   const choiceBird = document.querySelectorAll(".game-bird__item");
-  choiceBird.forEach(e => e.onclick = null);
+  // choiceBird.forEach(e => e.onclick = null);
   birdNum.firstChild.classList.add("_success");
   const nextButton = document.querySelector(".game__footer-button");
   nextButton.removeAttribute("disabled");
