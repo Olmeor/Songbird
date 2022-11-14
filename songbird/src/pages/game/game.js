@@ -15,7 +15,8 @@ document.onclick = closeBurger;
 
 
 
-export let randomBird = getRandomNum();
+// export let randomBird = getRandomNum();
+export let randomBird = 0;
 export let questionIndex = 0;
 let gameScore = 0;
 let currentScore = 5;
@@ -105,8 +106,6 @@ function resetSolution() {
 
 function addSolution(birdChoice) {
   const birdName = document.querySelector(".game-bird__name");
-  // console.log(birdName)
-  // console.log(questionIndex, birdChoice)
   birdName.textContent = `${birdsData[questionIndex][birdChoice].name}`;
   const birdSubName = document.querySelector(".game-bird__species");
   birdSubName.textContent = `${birdsData[questionIndex][birdChoice].species}`;
@@ -123,6 +122,7 @@ function addSolution(birdChoice) {
 function checkRandomBird(e) {
   let birdNum = e.target.closest(".game-bird__item");
   let birdChoice = birdNum.id.slice(-1);
+
   if (!birdNum || birdNum.firstChild.classList.contains("_error")) {
     return;
   }

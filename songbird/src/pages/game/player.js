@@ -80,13 +80,54 @@ function setValue(event, player = "player-1") {
   audio.volume = audioVolume.value / 100;
 }
 
+// function setProgress(event, player = "player-1") {
+//   const audioDuration = audio.duration;
+//   const audioProgress = document.querySelector(`.${player} .progress-bar`);
+//   if (!isNaN(audioDuration)) {
+//     audio.currentTime = audioProgress.value / 100 * audioDuration;
+//   }
+//   audio.addEventListener('timeupdate', renewProgress);
+// }
+
 function setProgress(event, player = "player-1") {
-  const audioDuration = audio.duration;
+  let bird = localStorage.getItem("randomBird");
+  audio.src = `${birdsData[questionIndex][bird].audio}`;
+  let audioDuration
+  const audioDurationTime = document.querySelector(`.${player} .play-duration-time`);
   const audioProgress = document.querySelector(`.${player} .progress-bar`);
-  if (!isNaN(audioDuration)) {
-    audio.currentTime = audioProgress.value / 100 * audioDuration;
-  }
-  audio.addEventListener('timeupdate', renewProgress);
+  const audioCurrentTime = document.querySelector(`.${player} .play-current-time`);
+  console.log("audio.currentTime", audio.currentTime)
+  console.log("audioDuration",audioDuration)
+  console.log("event",event.target.value)
+  
+  let promise = new Promise(function(resolve, reject) {
+    audio.onloadedmetadata = function() {
+      console.log(2222, player)
+      audioDuration = audio.duration;
+      let duration;
+      audio.currentTime = (event.target.value/100)*audio.duration
+      console.log(audioDuration, audioProgress)
+      audioDuration = audio.duration;
+      audioDurationTime.textContent = convertTime(Math.round(audioDuration));
+      console.log("audioCurrentTime",audioCurrentTime)
+      setTimeout(setCurrentTime, 500);
+      console.log("convertTime(Math.round(audio.currentTime))",convertTime(Math.round(audio.currentTime)))
+      console.log("audioDuration",audioDuration)
+      duration = audioDuration;
+    };
+  });
+  promise.then(
+    (function () {
+      audio.currentTime = currentTimeValue;
+      if (!isPlay) {
+        isPlay = true;
+        toggleButton();
+        const audioVolume = document.querySelector(`.${player} .vol-line`);
+        audio.volume = audioVolume.value/100;
+      };
+      audio.play();
+    }())
+  );
 }
 
 function renewProgress(elem, player = "player-1") {
@@ -112,7 +153,8 @@ export function initAudio(player) {
   audioVolume.addEventListener('change', setValue);
   audioProgress.addEventListener('change', setProgress);
   audio.addEventListener('timeupdate', renewProgress);
-  audioProgress.oninput = function() {
-    audio.removeEventListener('timeupdate', renewProgress);
-  }
+  // audioProgress.oninput = function() {
+  //   audio.removeEventListener('timeupdate', renewProgress);
+  // }
+  audio.addEventListener('ended', toggleButton);
 }
