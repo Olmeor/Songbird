@@ -125,9 +125,6 @@ function checkRandomBird(e) {
   let birdNum = e.target.closest(".game-bird__item");
   let birdChoice = birdNum.id.slice(-1);
 
-  // if (!birdNum || birdNum.firstChild.classList.contains("_error")) {
-  //   return;
-  // }
   addSolution(birdChoice);
   setDurationTime("player-2", birdChoice);
 
@@ -143,15 +140,13 @@ function checkRandomBird(e) {
       endAudio();
       isWin = true;
     } else {
-      let promise = new Promise(function(resolve, reject) {
-        initWin();
-        localStorage.setItem("score", gameScore);
-      });
-      promise.then(
-        window.location.href = "result.html"
-      );
+      playTrue();
+      endAudio();
+      isWin = true;
+      nextButton.onclick = showResult;
+      initWin();
+      localStorage.setItem("score", gameScore);
     }
-    // randomBird = getRandomNum();
   } else if (!isWin) {
     birdNum.firstChild.classList.add("_error");
     currentScore--;
@@ -164,7 +159,6 @@ nextButton.onclick = initLevel;
 
 function addWinLevel(birdNum) {
   const choiceBird = document.querySelectorAll(".game-bird__item");
-  // choiceBird.forEach(e => e.onclick = null);
   birdNum.firstChild.classList.add("_success");
   const nextButton = document.querySelector(".game__footer-button");
   nextButton.removeAttribute("disabled");
@@ -175,9 +169,13 @@ function addWinLevel(birdNum) {
   birdImage.style.backgroundSize = "cover";
 }
 
-function initWin () {
+function showResult() {
+  window.location.href = "result.html";
+}
+
+function initWin() {
   const nextButton = document.querySelector(".game__footer-button");
-  nextButton.textContent = "Новая игра";
+  nextButton.textContent = "Результат";
   questionIndex = 0;
 }
 
