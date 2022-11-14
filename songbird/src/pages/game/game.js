@@ -103,6 +103,7 @@ function resetSolution() {
   const birdPlayer = document.querySelectorAll(".game-random__player-wrapper");
   birdPlayer[1].classList.add('hidden-block');
   const birdDesc = document.querySelector(".game-bird__description");
+  birdDesc.style.overflowY = "hidden";
   birdDesc.textContent = "";
 }
 
@@ -117,6 +118,7 @@ function addSolution(birdChoice) {
   const birdPlayer = document.querySelectorAll(".game-random__player-wrapper");
   birdPlayer[1].classList.remove('hidden-block');
   const birdDesc = document.querySelector(".game-bird__description");
+  birdDesc.style.overflowY = "scroll";
   birdDesc.textContent = `${birdsData[questionIndex][birdChoice].description}`;
   birdDesc.classList.remove('hidden-block');
 }
