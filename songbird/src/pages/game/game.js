@@ -27,6 +27,7 @@ function getRandomNum(num = 6) {
 }
 
 function initLevel() {
+  console.log(birdsData[questionIndex][randomBird].name);
   currentScore = 5;
   isWin = false;
   const gameBirdList = document.querySelector(".game-bird__list");
@@ -161,6 +162,7 @@ function checkRandomBird(e) {
 const nextButton = document.querySelector(".game__footer-button");
 nextButton.onclick = function() {
   questionIndex = (questionIndex < 5) ? ++questionIndex : 0;
+  randomBird = getRandomNum();
   initLevel();
   endAudio();
   endAudioDesc();
