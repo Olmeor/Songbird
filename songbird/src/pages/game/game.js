@@ -130,7 +130,6 @@ function checkRandomBird(e) {
   let birdNum = e.target.closest(".game-bird__item");
   let birdChoice = birdNum.id.slice(-1);
   localStorage.setItem("chosenBird", birdChoice);
-
   addSolution(birdChoice);
   setDurationTimeDesc(birdChoice);
 
@@ -141,7 +140,7 @@ function checkRandomBird(e) {
       playTrue();
       endAudio();
       isWin = true;
-    } else if (questionIndex = 5 && (!isWin)) {
+    } else if (questionIndex == 5 && (!isWin)) {
       gameScore += currentScore;
       playTrue();
       endAudio();
@@ -161,7 +160,7 @@ function checkRandomBird(e) {
 
 const nextButton = document.querySelector(".game__footer-button");
 nextButton.onclick = function() {
-  questionIndex = (questionIndex == 5) ? 0 : ++questionIndex;
+  questionIndex = (questionIndex < 5) ? ++questionIndex : 0;
   initLevel();
   endAudio();
   endAudioDesc();
@@ -186,7 +185,6 @@ function showResult() {
 function initWin() {
   const nextButton = document.querySelector(".game__footer-button");
   nextButton.textContent = "Результат";
-  // questionIndex = 0;
 }
 
 function playFalse() {
