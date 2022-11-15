@@ -40,6 +40,38 @@
     </header>
 
     <main class="gallery">
+      <div class="gallery__container">
+        <h2 class="gallery__header">Нажмите на изображение, чтобы увидеть дополнительную информацию</h2>
+        <div class="gallery__popup hidden-block">
+          <div class="game-bird__inner">
+            <div class="gallery__popup_close"></div>
+            <div class="game-bird__container">
+              <div class="game-bird__image"></div>
+              <div class="game-bird__title">
+                <p class="game-bird__name">Говорун</p>
+                <p class="game-bird__species">Pticius zvizdobolius</p>
+              </div>
+            </div>
+            <div class="game-random__player-wrapper player-popup">
+              <div class="game-random__player-control">
+                <button class="play player-icon"></button>
+                <input class="progress-bar progress-style" type="range" min="0" max="100" value="0">
+              </div>
+              <div class="play-time">
+                <div class="play-current-time">00:00</div>
+                <div class="play-duration-time">00:00</div>
+              </div>
+              <div class="game-random__player-volume">
+                <button class="vol-mute player-icon"></button>
+                <input class="vol-line progress-style" type="range" min="0" max="100" value="10">
+              </div>
+            </div>
+            <div class="game-bird__description">Птица - Говорун, отличается умом и сообразительностью. Родина говорунов — планета Блук. Обладают необыкновенной памятью, что позволяет им воспроизводить любые когда-либо услышанные слова и звуки.</div>
+          </div>
+        </div>
+        <div class="gallery__wrapper">
+        </div>
+      </div>
     </main>
 
     <footer class="footer">

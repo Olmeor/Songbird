@@ -92,7 +92,7 @@ function resetBird() {
 resetBird();
 resetScore();
 
-function resetSolution() {
+export function resetSolution() {
   endAudioDesc();
   resetAudioDesc();
   const birdName = document.querySelector(".game-bird__name");
@@ -109,7 +109,7 @@ function resetSolution() {
   birdDesc.textContent = "";
 }
 
-function addSolution(birdChoice) {
+export function addSolution(birdChoice) {
   endAudioDesc();
   const birdName = document.querySelector(".game-bird__name");
   birdName.textContent = `${birdsData[questionIndex][birdChoice].name}`;

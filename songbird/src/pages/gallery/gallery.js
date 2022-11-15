@@ -3,8 +3,96 @@ import '../../assets/styles/normalize.css'
 import '../../assets/styles/body.css'
 import '../../assets/styles/header.css'
 import '../../assets/styles/footer.css'
+import '../game/player.css'
+import './gallery.css'
 
-import { burgerOpen, openBurger, closeBurger } from '../../assets/js/burger'
+import birdsData from '../../assets/js/birds'
+import { burgerOpen, openBurger, closeBurger } from './burgerPopup'
+import { setDurationTimePopup, initAudioPopup, endAudioPopup, resetAudioPopup } from './playerPopup'
 
 burgerOpen.onclick = openBurger;
 document.onclick = closeBurger;
+
+const initBirdsArray = () => {
+  let arr = [];
+
+  for (let i = 0; i < birdsData.flat().length; i++) {
+		arr[i] =
+		`
+    <div id="bird_${i}" class="gallery__bird">
+      <div class="gallery__border">
+        <div class="gallery__image"></div>
+      </div>
+      <div class="gallery__title">${birdsData.flat()[i].name}</div>
+    </div>
+		`;
+	}
+	return arr;
+};
+
+let arrBirds = initBirdsArray();
+
+const initGalleryLayout = () => {
+  let gallery = document.querySelector(".gallery__wrapper");
+
+  for (let i = 0; i < arrBirds.length; i++) {
+    gallery.innerHTML += arrBirds[i];
+	}
+};
+
+initGalleryLayout();
+
+const addBirdsImage = () => {
+  const birds = document.querySelectorAll(".gallery__image");
+
+  for (let i = 0; i < arrBirds.length; i++) {
+    birds[i].style.background = `url('${birdsData.flat()[i].image}') no-repeat center`;
+    birds[i].style.backgroundSize = "cover";
+	}
+};
+
+addBirdsImage();
+
+const birds = document.querySelectorAll(".gallery__image");
+birds.forEach(e => e.onclick = openPopup);
+
+export function openPopup(e) {
+  let birdNum = e.target.closest(".gallery__bird");
+  let birdChoice = birdNum.id.slice(-1);
+  const popup = document.querySelector('.gallery__popup');
+  const bodyShadow = document.querySelector('.body__shadow');
+  bodyShadow.classList.add('_active')
+  popup.classList.remove('hidden-block');
+  addPopup(birdChoice);
+  setDurationTimePopup(birdChoice);
+}
+
+function resetPopup() {
+  endAudioPopup();
+  resetAudioPopup();
+}
+
+function addPopup(birdChoice) {
+  endAudioPopup();
+  localStorage.setItem("galleryBird", birdChoice);
+  const birdName = document.querySelector(".game-bird__name");
+  birdName.textContent = `${birdsData.flat()[birdChoice].name}`;
+  const birdSubName = document.querySelector(".game-bird__species");
+  birdSubName.textContent = `${birdsData.flat()[birdChoice].species}`;
+  const birdImage = document.querySelector(".game-bird__image");
+  birdImage.style.background = `url('${birdsData.flat()[birdChoice].image}') no-repeat center`;
+  birdImage.style.backgroundSize = "cover";
+  const birdPopup = document.querySelector(".game-bird__description");
+  birdPopup.textContent = `${birdsData.flat()[birdChoice].description}`;
+  initAudioPopup();
+}
+
+export function closePopup(e) {
+  const popup = document.querySelector('.gallery__popup');
+  const bodyShadow = document.querySelector('.body__shadow');
+  if (popup) {
+    popup.classList.add('hidden-block');
+  }
+  bodyShadow.classList.remove('_active');
+  resetPopup();
+}

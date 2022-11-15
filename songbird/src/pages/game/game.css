@@ -132,12 +132,6 @@
   transition: .1s
 }
 
-/* .list-group-item {
-  padding: .85rem 1.25rem;
-  background-color: #303030;
-  border: 1px solid #555
-} */
-
 .default .game-bird__button {
   background-color: #FED9B7;
 }
@@ -157,7 +151,6 @@
   background: #0081A799;
   border-radius: 10px;
   padding: 15px;
-  /* min-height: 363px; */
 }
 
 .game-bird__container {
