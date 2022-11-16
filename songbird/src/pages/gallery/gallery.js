@@ -58,11 +58,13 @@ birds.forEach(e => e.onclick = openPopup);
 
 export function openPopup(e) {
   let birdNum = e.target.closest(".gallery__bird");
-  let birdChoice = birdNum.id.slice(-1);
-  const popup = document.querySelector('.gallery__popup');
+  let birdChoice = birdNum.id.slice(5);
+  let BirdID = `bird_${birdChoice}`;
+  // const popup = document.querySelector('.gallery__popup');
   const bodyShadow = document.querySelector('.body__shadow');
   bodyShadow.classList.add('_active')
-  popup.classList.remove('hidden-block');
+  // popup.classList.remove('hidden-block');
+  addLayoutPopup(BirdID);
   addPopup(birdChoice);
   setDurationTimePopup(birdChoice);
 }
@@ -70,6 +72,41 @@ export function openPopup(e) {
 function resetPopup() {
   endAudioPopup();
   resetAudioPopup();
+}
+
+function addLayoutPopup(BirdID) {
+  const bird = document.getElementById(`${BirdID}`);
+  const popup = document.createElement('div');
+  popup.classList.add("gallery__popup");
+  bird.prepend(popup);
+  popup.innerHTML +=
+  `
+  <div class="game-bird__inner">
+    <div class="gallery__popup_close"></div>
+    <div class="game-bird__container">
+      <div class="game-bird__image"></div>
+      <div class="game-bird__title">
+        <p class="game-bird__name"></p>
+        <p class="game-bird__species"></p>
+      </div>
+    </div>
+    <div class="game-random__player-wrapper player-popup">
+      <div class="game-random__player-control">
+        <button class="play player-icon"></button>
+        <input class="progress-bar progress-style" type="range" min="0" max="100" value="0">
+      </div>
+      <div class="play-time">
+        <div class="play-current-time">00:00</div>
+        <div class="play-duration-time">00:00</div>
+      </div>
+      <div class="game-random__player-volume">
+        <button class="vol-mute player-icon"></button>
+        <input class="vol-line progress-style" type="range" min="0" max="100" value="10">
+      </div>
+    </div>
+    <div class="game-bird__description"></div>
+  </div>
+  `;
 }
 
 function addPopup(birdChoice) {
@@ -89,10 +126,12 @@ function addPopup(birdChoice) {
 
 export function closePopup(e) {
   const popup = document.querySelector('.gallery__popup');
+  // const popup = document.getElementById(`${BirdID}`);
   const bodyShadow = document.querySelector('.body__shadow');
-  if (popup) {
-    popup.classList.add('hidden-block');
-  }
   bodyShadow.classList.remove('_active');
   resetPopup();
+  if (popup) {
+    // popup.classList.add('hidden-block');
+    popup.remove();
+  }
 }

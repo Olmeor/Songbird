@@ -42,9 +42,8 @@ export function closeBurger(e) {
 
 	const popup = document.querySelector('.gallery__popup');
 	const galleryPopupClose = document.querySelector('.gallery__popup_close');
-  if ( popup && !popup.classList.contains('hidden-block') &&
-    (e.target == galleryPopupClose ||
+  if ( popup && (e.target == galleryPopupClose ||
     e.target.classList.contains('body__shadow'))) {
       closePopup(e)
-    }
+  }
 }

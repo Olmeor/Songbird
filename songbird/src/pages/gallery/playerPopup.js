@@ -44,7 +44,9 @@ function convertTimePopup(duration) {
 
 function setCurrentTimePopup() {
   const audioCurrentTime = document.querySelector(".player-popup .play-current-time");
-  audioCurrentTime.textContent = convertTimePopup(currentTimeValuePopup);
+  if (audioCurrentTime) {
+    audioCurrentTime.textContent = convertTimePopup(currentTimeValuePopup);
+  }
   setTimeout(setCurrentTimePopup, 500);
 }
 
