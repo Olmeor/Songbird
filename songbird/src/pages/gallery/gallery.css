@@ -25,6 +25,7 @@
   display: flex;
   flex-wrap: wrap;
   justify-content: space-around;
+  position: relative;
 }
 
 .gallery__border {
@@ -70,7 +71,6 @@
   transition: all 0.4s ease;
   z-index: 2;
   display: flex;
-  /* gap: 10px; */
   flex-direction: column;
 }
 
