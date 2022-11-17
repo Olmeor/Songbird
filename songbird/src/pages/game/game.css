@@ -55,8 +55,8 @@
 }
 
 .game-random__image {
-  /* background: url('../../assets/images/back.jpg'); */
-  /* background-size: cover; */
+  background: url('../../assets/images/back.jpg');
+  background-size: cover;
   width: 200px;
   height: 155px;
   border-radius: 10px;
@@ -159,7 +159,7 @@
 }
 
 .game-bird__image {
-  background: url('../../assets/images/govorun.jpg') no-repeat center;
+  background: url('../../assets/images/back-game.jpg') no-repeat center;
   background-size: cover;
   width: 200px;
   height: 155px;

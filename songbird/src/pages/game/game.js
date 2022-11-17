@@ -13,6 +13,8 @@ import { setDurationTimeDesc, initAudioDesc, endAudioDesc, resetAudioDesc } from
 
 import soundFalse from '../../assets/sounds/false.mp3'
 import soundTrue from '../../assets/sounds/true.mp3'
+import backBird from '../../assets/images/back.jpg'
+import backGame from '../../assets/images/back-game.jpg'
 
 burgerOpen.onclick = openBurger;
 document.onclick = closeBurger;
@@ -88,7 +90,7 @@ function resetBird() {
   const birdName = document.querySelector(".game-random__header");
   birdName.textContent = "* * * * * *";
   const birdImage = document.querySelector(".game-random__image");
-  birdImage.style.background = `url('../../assets/images/back.jpg') no-repeat center`;
+  birdImage.style.background = `url('${backBird}') no-repeat center`;
   birdImage.style.backgroundSize = "cover";
 }
 
@@ -103,7 +105,7 @@ export function resetSolution() {
   const birdSubName = document.querySelector(".game-bird__species");
   birdSubName.textContent = "Выберите птицу из списка";
   const birdImage = document.querySelector(".game-bird__image");
-  birdImage.style.background = `url('../../assets/images/back-game.jpg') no-repeat center`;
+  birdImage.style.background = `url('${backGame}') no-repeat center`;
   birdImage.style.backgroundSize = "cover";
   const birdPlayer = document.querySelectorAll(".game-random__player-wrapper");
   birdPlayer[1].classList.add('hidden-block');

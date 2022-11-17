@@ -1,7 +1,7 @@
 // const { resolve } = require('path');
 const path = require('path');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
-const CopyPlugin = require('copy-webpack-plugin');
+// const CopyPlugin = require('copy-webpack-plugin');
 const { CleanWebpackPlugin } = require('clean-webpack-plugin');
 const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 
@@ -89,15 +89,15 @@ module.exports = ({ development }) => ({
       // filename: './css/[name].css'
       // filename: '[name].[contenthash].css'
     }),
-    new CopyPlugin({
-      patterns: [
+    // new CopyPlugin({
+    //   patterns: [
         // {from: './public',}
         // { from: './public', to 'dir' },
         // noErrorOnMissing: true,
         // { from: './src/assets/sounds/*.mp3', to: './assets/sounds/[name][ext]' },
-        { from: './src/assets/images/*.jpg', to: './assets/images/[name][ext]' },
-      ],
-    }),
+    //     { from: './src/assets/images/*.jpg', to: './assets/images/[name][ext]' },
+    //   ],
+    // }),
     new CleanWebpackPlugin({ cleanStaleWebpackAssets: false }),
   ],
   resolve: {
