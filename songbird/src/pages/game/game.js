@@ -11,6 +11,9 @@ import { burgerOpen, openBurger, closeBurger } from '../../assets/js/burger'
 import { setDurationTime, initAudio, endAudio } from './player'
 import { setDurationTimeDesc, initAudioDesc, endAudioDesc, resetAudioDesc } from './playerDesc'
 
+import soundFalse from '../../assets/sounds/false.mp3'
+import soundTrue from '../../assets/sounds/true.mp3'
+
 burgerOpen.onclick = openBurger;
 document.onclick = closeBurger;
 
@@ -190,14 +193,14 @@ function initWin() {
 }
 
 function playFalse() {
-  let audio = new Audio();
-  audio.src = '../../assets/sounds/false.mp3';
+  let audio = new Audio(soundFalse);
+  // audio.src = '../../assets/sounds/false.mp3';
   audio.play();
 }
 
 function playTrue() {
-  let audio = new Audio();
-  audio.src = '../../assets/sounds/true.mp3';
+  let audio = new Audio(soundTrue);
+  // audio.src = '../../assets/sounds/true.mp3';
   audio.play();
 }
 

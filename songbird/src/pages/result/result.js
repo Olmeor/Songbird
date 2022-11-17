@@ -7,6 +7,8 @@ import './result.css'
 
 import { burgerOpen, openBurger, closeBurger } from '../../assets/js/burger'
 
+import soundWin from '../../assets/sounds/win.mp3'
+
 burgerOpen.onclick = openBurger;
 document.onclick = closeBurger;
 
@@ -31,7 +33,7 @@ export function showWin() {
 showWin();
 
 function playWin() {
-  let audio = new Audio();
-  audio.src = '../../assets/sounds/win.mp3';
+  let audio = new Audio(soundWin);
+  // audio.src = '../../assets/sounds/win.mp3';
   audio.play();
 }

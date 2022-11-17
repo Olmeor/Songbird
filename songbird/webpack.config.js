@@ -94,7 +94,7 @@ module.exports = ({ development }) => ({
         // {from: './public',}
         // { from: './public', to 'dir' },
         // noErrorOnMissing: true,
-        { from: './src/assets/sounds/*.mp3', to: './assets/sounds/[name][ext]' },
+        // { from: './src/assets/sounds/*.mp3', to: './assets/sounds/[name][ext]' },
         { from: './src/assets/images/*.jpg', to: './assets/images/[name][ext]' },
       ],
     }),
