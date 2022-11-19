@@ -32,6 +32,7 @@ const initGame = () => {
   setLang();
   translateHeader();
   initGameLevels();
+  console.log("Score 270 / 270\nPlease clear local storage");
 }
 initGame();
 
