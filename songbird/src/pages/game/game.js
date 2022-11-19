@@ -172,7 +172,7 @@ function checkRandomBird(e) {
       initWin();
       localStorage.setItem("score", gameScore);
     }
-  } else if (!isWin) {
+  } else if (!isWin && !birdNum.firstChild.classList.contains("_error")) {
     birdNum.firstChild.classList.add("_error");
     currentScore--;
     playFalse();
