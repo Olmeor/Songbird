@@ -6,14 +6,24 @@ import '../../assets/styles/footer.css'
 import '../game/player.css'
 import './gallery.css'
 
-import birdsData from '../../assets/js/birds'
+import { birdsData, setBirdsData, changeLang, translateGalleryPage, flag, setFlag, toggleFlag, translateHeader } from '../../assets/js/translate'
 import { burgerOpen, openBurger, closeBurger } from './burgerPopup'
 import { setDurationTimePopup, initAudioPopup, endAudioPopup, resetAudioPopup } from './playerPopup'
 
 burgerOpen.onclick = openBurger;
 document.onclick = closeBurger;
 
-const initBirdsArray = () => {
+const initGallery = () => {
+  setFlag();
+  translateHeader();
+  setBirdsData();
+  initGalleryLayout();
+  translateGalleryPage();
+}
+
+initGallery();
+
+function initBirdsArray() {
   let arr = [];
 
   for (let i = 0; i < birdsData.flat().length; i++) {
@@ -28,11 +38,10 @@ const initBirdsArray = () => {
 		`;
 	}
 	return arr;
-};
+}
 
-let arrBirds = initBirdsArray();
-
-const initGalleryLayout = () => {
+function initGalleryLayout() {
+  let arrBirds = initBirdsArray();
   let gallery = document.querySelector(".gallery__wrapper");
 
   for (let i = 0; i < arrBirds.length; i++) {
@@ -40,9 +49,10 @@ const initGalleryLayout = () => {
 	}
 };
 
-initGalleryLayout();
+
 
 const addBirdsImage = () => {
+  let arrBirds = initBirdsArray();
   const birds = document.querySelectorAll(".gallery__image");
 
   for (let i = 0; i < arrBirds.length; i++) {
@@ -60,10 +70,8 @@ export function openPopup(e) {
   let birdNum = e.target.closest(".gallery__bird");
   let birdChoice = birdNum.id.slice(5);
   let BirdID = `bird_${birdChoice}`;
-  // const popup = document.querySelector('.gallery__popup');
   const bodyShadow = document.querySelector('.body__shadow');
   bodyShadow.classList.add('_active')
-  // popup.classList.remove('hidden-block');
   addLayoutPopup(BirdID);
   addPopup(birdChoice);
   setDurationTimePopup(birdChoice);
@@ -126,12 +134,18 @@ function addPopup(birdChoice) {
 
 export function closePopup(e) {
   const popup = document.querySelector('.gallery__popup');
-  // const popup = document.getElementById(`${BirdID}`);
   const bodyShadow = document.querySelector('.body__shadow');
   bodyShadow.classList.remove('_active');
   resetPopup();
   if (popup) {
-    // popup.classList.add('hidden-block');
     popup.remove();
   }
 }
+
+flag.onclick = function() {
+  changeLang();
+  toggleFlag();
+  translateHeader();
+  translateGalleryPage();
+  setBirdsData();
+};

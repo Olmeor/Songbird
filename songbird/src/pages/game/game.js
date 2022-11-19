@@ -6,29 +6,46 @@ import '../../assets/styles/footer.css'
 import './game.css'
 import './player.css'
 
-import birdsData from '../../assets/js/birds'
+import { translation, setLang, lang, changeLang, translateHeader, birdsData, setBirdsData, flag, setFlag, toggleFlag } from '../../assets/js/translate'
 import { burgerOpen, openBurger, closeBurger } from '../../assets/js/burger'
 import { setDurationTime, initAudio, endAudio } from './player'
 import { setDurationTimeDesc, initAudioDesc, endAudioDesc, resetAudioDesc } from './playerDesc'
 
 import soundFalse from '../../assets/sounds/false.mp3'
 import soundTrue from '../../assets/sounds/true.mp3'
+import soundWin from '../../assets/sounds/win.mp3'
 import backBird from '../../assets/images/back.jpg'
 import backGame from '../../assets/images/back-game.jpg'
 
 burgerOpen.onclick = openBurger;
 document.onclick = closeBurger;
 
+setBirdsData();
 export let randomBird = getRandomNum();
 export let questionIndex = 0;
 let gameScore = 0;
 let currentScore;
 let isWin = false;
 
+const initGame = () => {
+  setFlag();
+  setLang();
+  translateHeader();
+  initGameLevels();
+}
+initGame();
+
 function getRandomNum(num = 6) {
   const bird = Math.floor(Math.random() * num); // 0 - num-1
   localStorage.setItem("randomBird", bird);
   return bird;
+}
+
+function initGameLevels() {
+  const level = document.querySelectorAll(".game__item");
+  for (let i = 0; i <  translation[lang].levels.length; i++) {
+    level[i].textContent = translation[lang].levels[i];
+  }
 }
 
 function initLevel() {
@@ -51,7 +68,7 @@ function initLevel() {
   }
 
   const nextButton = document.querySelector(".game__footer-button");
-  nextButton.textContent = "Следующий вопрос";
+  nextButton.textContent = translation[lang].nextQuestion;
   if (!nextButton.hasAttribute("disabled")) {
     nextButton.disabled = true;
   }
@@ -60,8 +77,8 @@ function initLevel() {
   choiceBird.forEach(e => e.onclick = checkRandomBird);
 
   resetLevel();
-  const level = document.querySelectorAll(".game__item");
-  level[questionIndex].classList.add("game__item_active");
+  const levels = document.querySelectorAll(".game__item");
+  levels[questionIndex].classList.add("game__item_active");
 
   resetBird();
   resetSolution();
@@ -101,9 +118,9 @@ export function resetSolution() {
   endAudioDesc();
   resetAudioDesc();
   const birdName = document.querySelector(".game-bird__name");
-  birdName.textContent = "Прослушайте голос птицы";
+  birdName.textContent = translation[lang].listenVoice;
   const birdSubName = document.querySelector(".game-bird__species");
-  birdSubName.textContent = "Выберите птицу из списка";
+  birdSubName.textContent = translation[lang].choiceBird;
   const birdImage = document.querySelector(".game-bird__image");
   birdImage.style.background = `url('${backGame}') no-repeat center`;
   birdImage.style.backgroundSize = "cover";
@@ -148,7 +165,7 @@ function checkRandomBird(e) {
       isWin = true;
     } else if (questionIndex == 5 && (!isWin)) {
       gameScore += currentScore;
-      playTrue();
+      playWin();
       endAudio();
       isWin = true;
       nextButton.onclick = showResult;
@@ -191,19 +208,35 @@ function showResult() {
 
 function initWin() {
   const nextButton = document.querySelector(".game__footer-button");
-  nextButton.textContent = "Результат";
+  nextButton.textContent = translation[lang].nextResult;
 }
 
 function playFalse() {
   let audio = new Audio(soundFalse);
-  // audio.src = '../../assets/sounds/false.mp3';
   audio.play();
 }
 
 function playTrue() {
   let audio = new Audio(soundTrue);
-  // audio.src = '../../assets/sounds/true.mp3';
+  audio.play();
+}
+
+function playWin() {
+  let audio = new Audio(soundWin);
   audio.play();
 }
 
 initAudio();
+
+flag.onclick = function() {
+  // randomBird = getRandomNum();
+  // questionIndex = 0;
+  // gameScore = 0;
+  // isWin = false;
+  changeLang();
+  toggleFlag();
+  translateHeader();
+  setBirdsData();
+  initLevel();
+  initGameLevels();
+};

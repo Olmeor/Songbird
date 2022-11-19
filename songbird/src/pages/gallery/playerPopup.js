@@ -1,4 +1,5 @@
-import birdsData from '../../assets/js/birds'
+// import birdsData from '../../assets/js/birds'
+import { birdsData, setBirdsData, changeLang, translateGalleryPage, flag, setFlag, toggleFlag, translateHeader } from '../../assets/js/translate'
 
 let isPlayPopup = false;
 let currentTimeValuePopup = 0;

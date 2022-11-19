@@ -6,13 +6,33 @@ import '../../assets/styles/footer.css'
 import './result.css'
 
 import { burgerOpen, openBurger, closeBurger } from '../../assets/js/burger'
-
-import soundWin from '../../assets/sounds/win.mp3'
+import { translation, setLang, lang, changeLang, flag, setFlag, toggleFlag, translateHeader } from '../../assets/js/translate'
 
 burgerOpen.onclick = openBurger;
 document.onclick = closeBurger;
 
 let outputScore = (localStorage.getItem("score")) ? (localStorage.getItem("score")) : 0;
+
+const initResult = () => {
+  setFlag();
+  setLang();
+  translateHeader();
+  initResultLayout();
+}
+initResult();
+
+function initResultLayout() {
+  if (+outputScore) {
+    return;
+  }
+
+  const header = document.querySelector(".result__header");
+  header.textContent = translation[lang].resultHeader;
+  const paragraph = document.querySelector(".result__paragraph");
+  paragraph.textContent = translation[lang].resultParagraph;
+  const button = document.querySelector(".result__button");
+  button.textContent = translation[lang].resultButton;
+}
 
 export function showWin() {
   if (!(+outputScore)) {
@@ -20,20 +40,28 @@ export function showWin() {
   }
 
   const header = document.querySelector(".result__header");
-  header.textContent = "Поздравляем!";
+  header.textContent = translation[lang].resultWinHeader;
   const paragraph = document.querySelector(".result__paragraph");
-  paragraph.textContent = `Вы прошли викторину и набрали ${outputScore} из 30 возможных баллов!`
+  paragraph.innerHTML = translation[lang].resultWinParagraph;
+  const score = document.querySelector(".result__score");
+  score.textContent = outputScore;
   const button = document.querySelector(".result__button");
-  button.textContent = "Начать заново"
-  playWin();
-  outputScore = 0;
-  localStorage.setItem("score", 0);
+  button.textContent = translation[lang].resultWinButton;
 }
 
 showWin();
 
-function playWin() {
-  let audio = new Audio(soundWin);
-  // audio.src = '../../assets/sounds/win.mp3';
-  audio.play();
-}
+const resultButton = document.querySelector(".result__button");
+resultButton.onclick = function() {
+  outputScore = 0;
+  localStorage.setItem("score", 0);
+  window.location.href = "main.html";
+};
+
+flag.onclick = function() {
+  changeLang();
+  toggleFlag();
+  translateHeader();
+  initResultLayout();
+  showWin();
+};
