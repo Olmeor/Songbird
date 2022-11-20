@@ -6,7 +6,7 @@ import '../../assets/styles/footer.css'
 import './game.css'
 import './player.css'
 
-import { translation, setLang, lang, changeLang, translateHeader, birdsData, setBirdsData, flag, setFlag, toggleFlag } from '../../assets/js/translate'
+import { translation, setLang, lang, changeLang, translateHeader, birdsData, setBirdsData } from '../../assets/js/translate'
 import { burgerOpen, openBurger, closeBurger } from '../../assets/js/burger'
 import { setDurationTime, initAudio, endAudio } from './player'
 import { setDurationTimeDesc, initAudioDesc, endAudioDesc, resetAudioDesc } from './playerDesc'
@@ -28,7 +28,6 @@ let currentScore;
 let isWin = false;
 
 const initGame = () => {
-  setFlag();
   setLang();
   translateHeader();
   initGameLevels();
@@ -228,12 +227,3 @@ function playWin() {
 }
 
 initAudio();
-
-flag.onclick = function() {
-  changeLang();
-  toggleFlag();
-  translateHeader();
-  setBirdsData();
-  initLevel();
-  initGameLevels();
-};

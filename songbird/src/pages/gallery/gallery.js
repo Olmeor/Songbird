@@ -6,7 +6,7 @@ import '../../assets/styles/footer.css'
 import '../game/player.css'
 import './gallery.css'
 
-import { birdsData, setBirdsData, changeLang, translateGalleryPage, flag, setFlag, toggleFlag, translateHeader } from '../../assets/js/translate'
+import { birdsData, setBirdsData, translateGalleryPage, translateHeader } from '../../assets/js/translate'
 import { burgerOpen, openBurger, closeBurger } from './burgerPopup'
 import { setDurationTimePopup, initAudioPopup, endAudioPopup, resetAudioPopup } from './playerPopup'
 
@@ -14,7 +14,6 @@ burgerOpen.onclick = openBurger;
 document.onclick = closeBurger;
 
 const initGallery = () => {
-  setFlag();
   translateHeader();
   setBirdsData();
   initGalleryLayout();
@@ -141,11 +140,3 @@ export function closePopup(e) {
     popup.remove();
   }
 }
-
-flag.onclick = function() {
-  changeLang();
-  toggleFlag();
-  translateHeader();
-  translateGalleryPage();
-  setBirdsData();
-};

@@ -19,43 +19,18 @@
   transition: all 0.4s ease;
 }
 
-.footer__inner {
-  display: flex;
-  gap: 5px;
-}
-
-.footer__flag {
-  background-size: 45px 31px;
-  background-repeat: no-repeat;
-  width: 45px;
-  height: 31px;
-  z-index: 1;
-  transition: all 0.4s ease;
-  border: 1px solid #0081A7;
-  cursor: pointer;
-}
-
-.ru-flag {
-  background-image: url("../../assets/icons/russia-flag-icon.svg");
-}
-
-.en-flag {
-  background-image: url("../../assets/icons/united-kingdom-flag-icon.svg");
-}
-
-
 .footer__github-logo {
   background-image: url("../../assets/icons/github_logo.svg");
   background-size: 35px 35px;
   background-repeat: no-repeat;
-  width: 35px;
+  background-position: right;
+  width: 80px;
   height: 35px;
   z-index: 1;
   transition: all 0.4s ease;
   margin-top: -2px;
 }
 
-.footer__flag:hover,
 .footer__rss-logo:hover,
 .footer__github-logo:hover {
   transform: scale(1.1);
@@ -78,12 +53,6 @@
     margin: 15px;
   }
 
-  .footer__flag {
-    background-size: 30px 21px;
-    width: 30px;
-    height: 21px;
-  }
-
   .footer__rss-logo {
     background-size: 60px 23px;
     width: 60px;
@@ -92,7 +61,7 @@
 
   .footer__github-logo {
     background-size: 25px 25px;
-    width: 25px;
+    width: 60px;
     height: 25px;
   }
 

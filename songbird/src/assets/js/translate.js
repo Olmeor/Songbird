@@ -2,7 +2,7 @@ import birdsDataRU from '../../assets/js/birds'
 import birdsDataEN from '../../assets/js/birds-en'
 
 export let birdsData;
-export const flag = document.querySelector(".footer__flag");
+// export const flag = document.querySelector(".main__flag");
 
 export let lang;
 export const setLang = () => {
@@ -39,6 +39,7 @@ export const translation = {
     nextQuestion: "Следующий вопрос",
     nextResult: "Результат",
     gameOver: "Игра окончена",
+    language: "Язык",
   },
 
   en: {
@@ -59,6 +60,7 @@ export const translation = {
     nextQuestion: "Next question",
     nextResult: "Result",
     gameOver: "Game over",
+    language: "Language",
   },
 };
 
@@ -86,16 +88,18 @@ export function translateGalleryPage() {
 }
 
 export function setFlag() {
-  if (lang == "ru" && flag.classList.contains("ru-flag")) {
-    flag.classList.remove("ru-flag");
-    flag.classList.add("en-flag");
-  } else if (lang == "en" && flag.classList.contains("en-flag")) {
+  const flag = document.querySelector(".main__flag");
+  if (lang == "ru" && flag.classList.contains("en-flag")) {
     flag.classList.remove("en-flag");
     flag.classList.add("ru-flag");
+  } else if (lang == "en" && flag.classList.contains("ru-flag")) {
+    flag.classList.remove("ru-flag");
+    flag.classList.add("en-flag");
   }
 }
 
 export function toggleFlag() {
+  const flag = document.querySelector(".main__flag");
   if ((flag.classList.contains("ru-flag"))) {
     flag.classList.remove("ru-flag");
     flag.classList.add("en-flag");
@@ -144,12 +148,15 @@ export function translateAboutPage() {
   </a>
   `;
 
-  const mainWrapper = document.querySelector(".main__wrapper");
-  mainWrapper.innerHTML = '';
+  const mainAbout = document.querySelector(".main__about");
+  mainAbout.innerHTML = '';
 
   if (lang == "en") {
-    mainWrapper.innerHTML += aboutEN;
+    mainAbout.innerHTML += aboutEN;
   } else {
-    mainWrapper.innerHTML += aboutRU;
+    mainAbout.innerHTML += aboutRU;
   }
+
+  const mainLanguage = document.querySelector(".main__language");
+  mainLanguage.textContent = translation[lang].language;
 }

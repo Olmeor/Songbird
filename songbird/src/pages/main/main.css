@@ -14,6 +14,38 @@
   z-index: 1;
 }
 
+.main__inner {
+  display: flex;
+  justify-content: flex-end;
+  align-items: flex-end;
+  gap: 5px;
+  margin-bottom: 10px;
+}
+
+.main__language {
+  font-size: 1.2rem;
+  vertical-align: bottom;
+}
+
+.main__flag {
+  background-size: 45px 31px;
+  background-repeat: no-repeat;
+  width: 45px;
+  height: 31px;
+  z-index: 1;
+  transition: all 0.4s ease;
+  border: 1px solid #0081A7;
+  cursor: pointer;
+}
+
+.ru-flag {
+  background-image: url("../../assets/icons/russia-flag-icon.svg");
+}
+
+.en-flag {
+  background-image: url("../../assets/icons/united-kingdom-flag-icon.svg");
+}
+
 .main__title {
   text-align: center;
   font-size: 2rem;

@@ -6,7 +6,7 @@ import '../../assets/styles/footer.css'
 import './result.css'
 
 import { burgerOpen, openBurger, closeBurger } from '../../assets/js/burger'
-import { translation, setLang, lang, changeLang, flag, setFlag, toggleFlag, translateHeader } from '../../assets/js/translate'
+import { translation, setLang, lang, translateHeader } from '../../assets/js/translate'
 
 burgerOpen.onclick = openBurger;
 document.onclick = closeBurger;
@@ -14,7 +14,6 @@ document.onclick = closeBurger;
 let outputScore = (localStorage.getItem("score")) ? (localStorage.getItem("score")) : 0;
 
 const initResult = () => {
-  setFlag();
   setLang();
   translateHeader();
   initResultLayout();
@@ -62,12 +61,4 @@ resultButton.onclick = function() {
   outputScore = 0;
   localStorage.setItem("score", 0);
   window.location.href = "main.html";
-};
-
-flag.onclick = function() {
-  changeLang();
-  toggleFlag();
-  translateHeader();
-  initResultLayout();
-  showWin();
 };
