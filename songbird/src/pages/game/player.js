@@ -124,7 +124,6 @@ export function endAudio() {
   }
   isPlay = false;
   currentTimeValue = 0;
-  // toggleButton();
   audio.currentTime = 0;
   audio.pause();
 }

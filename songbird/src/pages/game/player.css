@@ -9,21 +9,16 @@
 }
 
 .player-icon {
-  /* width:32px;
-  height: 32px;
-  background-size: 32px 32px; */
   background-position: center center;
   background-repeat: no-repeat;
   background-color: transparent;
   border: 0;
   outline: 0;
-  /* opacity: .8; */
   transition: all 0.4s ease;
   transform: scale(1.0);
 }
 
 .player-icon:hover {
-  /* opacity: 1; */
   transition: all 0.4s ease;
   transform: scale(1.1);
 }
@@ -93,10 +88,6 @@
 
 .vol-mute {
   background-image: url("../../assets/icons/volume.svg");
-  /* background-repeat: no-repeat;
-  justify-self: flex-start;
-  min-width: 32px;
-  height: 32px; */
   min-width: 33px;
   height: 30px;
   left: 0;
@@ -117,6 +108,7 @@
 
 .progress-style {
   -webkit-appearance: none;
+  -moz-appearance: none;
   appearance: none;
   height: 6px;
   width: 100%;
@@ -153,7 +145,6 @@
 .play-time {
   display: flex;
   justify-content: space-between;
-  /* margin-top: 5px; */
   margin-left: 35px;
   margin-bottom: 5px;
 }
@@ -161,7 +152,6 @@
 .play-current-time,
 .play-duration-time {
   font-size: 14px;
-  /* opacity: .8; */
 }
 
 @media screen and (max-width: 480px) {

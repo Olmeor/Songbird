@@ -230,10 +230,6 @@ function playWin() {
 initAudio();
 
 flag.onclick = function() {
-  // randomBird = getRandomNum();
-  // questionIndex = 0;
-  // gameScore = 0;
-  // isWin = false;
   changeLang();
   toggleFlag();
   translateHeader();

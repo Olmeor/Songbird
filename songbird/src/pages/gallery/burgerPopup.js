@@ -1,9 +1,5 @@
 import { closePopup } from "./gallery";
 
-// const burgerOpen = document.querySelector('.header__burger_open');
-
-// burgerOpen.onclick = openBurger;
-
 export const burgerOpen = document.querySelector('.header__burger_open');
 
 export function openBurger(e) {
@@ -19,9 +15,6 @@ export function openBurger(e) {
 	burgerClose.classList.add('header__burger_close_active');
   document.body.style = "overflow: hidden";
 }
-
-// document.onclick = closeBurger;
-// document.onclick = closeWindows; // burger + testimonials
 
 export function closeBurger(e) {
 	const bodyShadow = document.querySelector('.body__shadow');
