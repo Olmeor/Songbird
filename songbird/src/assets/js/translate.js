@@ -38,6 +38,7 @@ export const translation = {
     choiceBird: "Выберите птицу из списка",
     nextQuestion: "Следующий вопрос",
     nextResult: "Результат",
+    gameOver: "Игра окончена",
   },
 
   en: {
@@ -57,6 +58,7 @@ export const translation = {
     choiceBird: "Select a bird from the list",
     nextQuestion: "Next question",
     nextResult: "Result",
+    gameOver: "Game over",
   },
 };
 

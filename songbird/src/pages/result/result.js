@@ -28,8 +28,10 @@ function initResultLayout() {
 
   const header = document.querySelector(".result__header");
   header.textContent = translation[lang].resultHeader;
-  const paragraph = document.querySelector(".result__paragraph");
+  const paragraph = document.querySelector(".result__text-score");
   paragraph.textContent = translation[lang].resultParagraph;
+  const maxScore = document.querySelector(".result__max-score");
+  maxScore.textContent = "";
   const button = document.querySelector(".result__button");
   button.textContent = translation[lang].resultButton;
 }
@@ -41,10 +43,14 @@ export function showWin() {
 
   const header = document.querySelector(".result__header");
   header.textContent = translation[lang].resultWinHeader;
-  const paragraph = document.querySelector(".result__paragraph");
+  const paragraph = document.querySelector(".result__text-score");
   paragraph.innerHTML = translation[lang].resultWinParagraph;
   const score = document.querySelector(".result__score");
   score.textContent = outputScore;
+  if (outputScore == 30) {
+    const maxScore = document.querySelector(".result__max-score");
+  maxScore.textContent = translation[lang].gameOver;
+  }
   const button = document.querySelector(".result__button");
   button.textContent = translation[lang].resultWinButton;
 }
